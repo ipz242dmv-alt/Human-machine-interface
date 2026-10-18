@@ -1,19 +1,24 @@
 <!doctype html>
-<html>
+<html lang="en-GB">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="./assets/fonts/feather/feather.css">
     <link rel="stylesheet" href="./assets/css/theme.css">
     <link rel="stylesheet" href="./assets/css/site.css">
-    <title>Page title</title>
+    <title>ACME Fashion House | Women’s, Men’s and Kids’ Fashion Online</title>
 </head>
 <body>
+<div id="skiplink">
+    <a href="#content">Skip to main content</a>
+</div>
+
+<header>
 <div class="navbar navbar-topbar navbar-expand-xl navbar-light bg-light">
     <div class="container">
         <!-- Promo -->
         <div class="mr-xl-8">
-            <i class="fe fe-truck mr-2"></i> <span class="heading-xxxs">Free shipping worldwide</span>
+            <i aria-hidden="true" class="fe fe-truck mr-2"></i> <span class="heading-xxxs">Free shipping worldwide</span>
         </div>
     </div>
 </div>
@@ -24,11 +29,11 @@
         <!-- Brand -->
         <h1 class="sr-hidden">ACME Fashion House</h1>
         <a class="navbar-brand" href="#">
-            <img src="./assets/img/site/logo.png" width="209" height="81">
+            <img src="./assets/img/site/logo.png" width="209" height="81" alt="ACME Fashion House – home page">
         </a>
 
         <!-- Collapse -->
-        <div class="collapse navbar-collapse" id="navbarCollapse">
+        <nav class="collapse navbar-collapse" id="navbarCollapse" aria-label="Main">
             <!-- Nav -->
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item dropdown">
@@ -59,32 +64,34 @@
             <!-- Nav -->
             <ul class="navbar-nav flex-row">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fe fe-search"></i>
+                    <a class="nav-link" href="#" aria-label="Search">
+                        <i aria-hidden="true" class="fe fe-search"></i>
                     </a>
                 </li>
                 <li class="nav-item ml-lg-n4">
-                    <a class="nav-link" href="#">
-                        <i class="fe fe-user"></i>
+                    <a class="nav-link" href="#" aria-label="My account">
+                        <i aria-hidden="true" class="fe fe-user"></i>
                     </a>
                 </li>
                 <li class="nav-item ml-lg-n4">
-                    <a class="nav-link" href="#">
-                        <i class="fe fe-heart"></i>
+                    <a class="nav-link" href="#" aria-label="Wishlist">
+                        <i aria-hidden="true" class="fe fe-heart"></i>
                     </a>
                 </li>
                 <li class="nav-item ml-lg-n4">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="#" aria-label="Shopping cart, 2 items">
 								<span data-cart-items="2">
-									<i class="fe fe-shopping-cart"></i>
+									<i aria-hidden="true" class="fe fe-shopping-cart"></i>
 								</span>
                     </a>
                 </li>
             </ul>
-        </div>
+        </nav>
     </div>
 </div>
+</header>
 
+<main id="content" tabindex="-1">
 <!-- PROMO -->
 <div class="py-3 bg-dark bg-pattern mb-4 promo">
     <div class="container">
@@ -102,7 +109,8 @@
 </div>
 
 <!-- CATEGORIES -->
-<div>
+<section aria-labelledby="categories-heading">
+    <h2 id="categories-heading" class="sr-hidden">Shop by category</h2>
     <div class="row no-gutters d-block d-lg-flex">
 
         <!-- Item -->
@@ -111,16 +119,16 @@
                 <div class="card-body mt-auto mb-n11 py-8">
                     <!-- Heading -->
                     <div class="center itemHeader">
-                        <div class="mb-0 font-weight-bolder h2">
+                        <h3 class="mb-0 font-weight-bolder h2">
                             Women
-                        </div>
+                        </h3>
                     </div>
                 </div>
                 <div class="card-body mt-auto py-8">
 
                     <!-- Button -->
-                    <a class="btn btn-white stretched-link" href="#">
-                        Shop Women <i class="fe fe-arrow-right ml-2"></i>
+                    <a class="btn btn-white stretched-link" href="#" aria-label="Shop women’s collection">
+                        Shop Women <i aria-hidden="true" class="fe fe-arrow-right ml-2"></i>
                     </a>
 
                 </div>
@@ -133,15 +141,15 @@
                 <div class="card-body mt-auto mb-n11 py-8">
                     <!-- Heading -->
                     <div class="center itemHeader">
-                        <div class="mb-0 font-weight-bolder h2">
+                        <h3 class="mb-0 font-weight-bolder h2">
                             Men
-                        </div>
+                        </h3>
                     </div>
                 </div>
                 <div class="card-body mt-auto py-8">
                     <!-- Button -->
-                    <a class="btn btn-white stretched-link" href="#">
-                        Shop Men <i class="fe fe-arrow-right ml-2"></i>
+                    <a class="btn btn-white stretched-link" href="#" aria-label="Shop men’s collection">
+                        Shop Men <i aria-hidden="true" class="fe fe-arrow-right ml-2"></i>
                     </a>
                 </div>
             </div>
@@ -153,38 +161,37 @@
                 <div class="card-body mt-auto mb-n11 py-8">
                     <!-- Heading -->
                     <div class="center itemHeader">
-                        <div class="mb-0 font-weight-bolder h2">
+                        <h3 class="mb-0 font-weight-bolder h2">
                             Kids
-                        </div>
+                        </h3>
                     </div>
                 </div>
                 <div class="card-body mt-auto py-8">
                     <!-- Button -->
-                    <a class="btn btn-white stretched-link" href="#">
-                        Shop Kids <i class="fe fe-arrow-right ml-2"></i>
+                    <a class="btn btn-white stretched-link" href="#" aria-label="Shop kids’s collection">
+                        Shop Kids <i aria-hidden="true" class="fe fe-arrow-right ml-2"></i>
                     </a>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>
 
 <!-- FEATURES -->
 <div class="pt-7">
     <div class="container">
+        <h2 class="sr-hidden">Why shop with us</h2>
         <div class="row pb-7 border-bottom">
             <div class="col-12 col-md-6 col-lg-3">
                 <!-- Item -->
                 <div class="d-flex mb-6 mb-lg-0">
                     <!-- Icon -->
-                    <i class="fe fe-truck font-size-lg text-primary"></i>
+                    <i aria-hidden="true" class="fe fe-truck font-size-lg text-primary"></i>
 
                     <!-- Body -->
                     <div class="ml-6">
                         <!-- Heading -->
-                        <div class="heading-xxs mb-1">
-                            Free shipping
-                        </div>
+                        <h3 class="heading-xxs mb-1">Free shipping</h3>
                         <!-- Text -->
                         <p class="mb-0 font-size-sm text-muted">
                             From all orders over $100
@@ -197,15 +204,13 @@
                 <div class="d-flex mb-6 mb-lg-0">
 
                     <!-- Icon -->
-                    <i class="fe fe-repeat font-size-lg text-primary"></i>
+                    <i aria-hidden="true" class="fe fe-repeat font-size-lg text-primary"></i>
 
                     <!-- Body -->
                     <div class="ml-6">
 
                         <!-- Heading -->
-                        <div class="mb-1 heading-xxs">
-                            Free returns
-                        </div>
+                        <h3 class="heading-xxs mb-1">Free returns</h3>
 
                         <!-- Text -->
                         <p class="mb-0 font-size-sm text-muted">
@@ -221,15 +226,13 @@
                 <div class="d-flex mb-6 mb-md-0">
 
                     <!-- Icon -->
-                    <i class="fe fe-lock font-size-lg text-primary"></i>
+                    <i aria-hidden="true" class="fe fe-lock font-size-lg text-primary"></i>
 
                     <!-- Body -->
                     <div class="ml-6">
 
                         <!-- Heading -->
-                        <div class="mb-1 heading-xxs">
-                            Secure shopping
-                        </div>
+                        <h3 class="heading-xxs mb-1">Secure shopping</h3>
 
                         <!-- Text -->
                         <p class="mb-0 font-size-sm text-muted">
@@ -245,15 +248,13 @@
                 <!-- Item -->
                 <div class="d-flex">
                     <!-- Icon -->
-                    <i class="fe fe-tag font-size-lg text-primary"></i>
+                    <i aria-hidden="true" class="fe fe-tag font-size-lg text-primary"></i>
 
                     <!-- Body -->
                     <div class="ml-6">
 
                         <!-- Heading -->
-                        <div class="mb-1 heading-xxs">
-                            Over 10,000 Styles
-                        </div>
+                        <h3 class="heading-xxs mb-1">Over 10,000 Styles</h3>
 
                         <!-- Text -->
                         <p class="mb-0 font-size-sm text-muted">
@@ -279,7 +280,7 @@
                 </div>
 
                 <!-- Heading -->
-                <div class="mb-4 h2BestPicks">Best Picks 2020</div>
+                <h2 class="mb-4 h2BestPicks">Best Picks 2020</h2>
 
                 <!-- Subheading -->
                 <p class="mb-10 text-gray-500">
@@ -300,11 +301,11 @@
 
                         <div class="itemHeader">
                             <!-- Heading -->
-                            <div class="h4 mb-0">Bags Collection</div>
+                            <h3 class="h4 mb-0">Bags Collection</h3>
 
                             <!-- Link -->
-                            <a class="btn btn-link stretched-link text-reset" href="#">
-                                Shop Now <i class="fe fe-arrow-right ml-2"></i>
+                            <a class="btn btn-link stretched-link text-reset" href="#" aria-label="Shop now: Bags Collection">
+                                Shop Now <i aria-hidden="true" class="fe fe-arrow-right ml-2"></i>
                             </a>
                         </div>
                     </div>
@@ -324,11 +325,11 @@
 
                         <div class="itemHeader">
                             <!-- Heading -->
-                            <div class="h4 mb-0">Printed men’s Shirts</div>
+                            <h3 class="h4 mb-0">Printed men’s Shirts</h3>
 
                             <!-- Link -->
-                            <a class="btn btn-link stretched-link px-0 text-reset" href="#">
-                                Shop Now <i class="fe fe-arrow-right ml-2"></i>
+                            <a class="btn btn-link stretched-link px-0 text-reset" href="#" aria-label="Shop now: Printed men’s Shirts">
+                                Shop Now <i aria-hidden="true" class="fe fe-arrow-right ml-2"></i>
                             </a>
                         </div>
                     </div>
@@ -341,11 +342,11 @@
                     <div class="card-body my-auto px-md-10 text-center text-md-left">
                         <!-- Heading -->
                         <div class="itemHeader">
-                            <div class="h4 mb-0">Basic women’s Dresses</div>
+                            <h3 class="h4 mb-0">Basic women’s Dresses</h3>
 
                             <!-- Link -->
-                            <a class="btn btn-link stretched-link px-0 text-reset" href="#">
-                                Shop Now <i class="fe fe-arrow-right ml-2"></i>
+                            <a class="btn btn-link stretched-link px-0 text-reset" href="#" aria-label="Shop now: Basic women’s Dresses">
+                                Shop Now <i aria-hidden="true" class="fe fe-arrow-right ml-2"></i>
                             </a>
                         </div>
                     </div>
@@ -359,11 +360,11 @@
                     <div class="card-body my-auto text-center">
                         <!-- Heading -->
                         <div class="itemHeader">
-                            <div class="h4 mb-0">Sweatshirts</div>
+                            <h3 class="h4 mb-0">Sweatshirts</h3>
 
                             <!-- Link -->
-                            <a class="btn btn-link stretched-link text-reset" href="#">
-                                Shop Now <i class="fe fe-arrow-right ml-2"></i>
+                            <a class="btn btn-link stretched-link text-reset" href="#" aria-label="Shop now: Sweatshirts">
+                                Shop Now <i aria-hidden="true" class="fe fe-arrow-right ml-2"></i>
                             </a>
                         </div>
                     </div>
@@ -379,14 +380,14 @@
         <div class="row justify-content-center">
             <div class="col-12 col-md-10 col-lg-8 col-xl-6">
                 <!-- Heading -->
-                <div class="h2 mb-4 text-center">Top month Sellers</div>
+                <h2 class="h2 mb-4 text-center">Top month Sellers</h2>
 
                 <!-- Nav -->
-                <div class="nav justify-content-center mb-10">
-                    <a class="nav-link active" href="#topSellersTab">Women</a>
+                <nav class="nav justify-content-center mb-10" aria-label="Top sellers category">
+                    <a class="nav-link active" href="#topSellersTab" aria-current="true">Women</a>
                     <a class="nav-link" href="#topSellersTab">Men</a>
                     <a class="nav-link" href="#topSellersTab">Kids</a>
-                </div>
+                </nav>
             </div>
         </div>
         <div class="tab-content">
@@ -407,21 +408,21 @@
                                 <!-- Image -->
                                 <a href="#">
                                     <img class="card-img-top card-img-front" src="./assets/img/site/sandals.png"
-                                         width="253" height="300">
+                                         width="253" height="300" alt="Leather mid-heel Sandals">
                                 </a>
 
                                 <!-- Actions -->
 
-                                <button class="btn btn-xs btn-circle btn-white-primary">
-                                    <i class="fe fe-eye"></i>
+                                <button type="button" class="btn btn-xs btn-circle btn-white-primary" aria-label="Quick view: Leather mid-heel Sandals">
+                                    <i aria-hidden="true" class="fe fe-eye"></i>
                                 </button>
 
-                                <button class="btn btn-xs btn-circle btn-white-primary">
-                                    <i class="fe fe-shopping-cart"></i>
+                                <button type="button" class="btn btn-xs btn-circle btn-white-primary" aria-label="Add to cart: Leather mid-heel Sandals">
+                                    <i aria-hidden="true" class="fe fe-shopping-cart"></i>
                                 </button>
 
-                                <button class="btn btn-xs btn-circle btn-white-primary">
-                                    <i class="fe fe-heart"></i>
+                                <button type="button" class="btn btn-xs btn-circle btn-white-primary" aria-label="Add to wishlist: Leather mid-heel Sandals">
+                                    <i aria-hidden="true" class="fe fe-heart"></i>
                                 </button>
                             </div>
 
@@ -433,11 +434,11 @@
                                 </div>
 
                                 <!-- Title -->
-                                <div class="font-weight-bold">
+                                <h3 class="product-title font-weight-bold">
                                     <a class="text-body" href="#">
                                         Leather mid-heel Sandals
                                     </a>
-                                </div>
+                                </h3>
 
                                 <!-- Price -->
                                 <div class="font-weight-bold text-muted">
@@ -455,20 +456,20 @@
                                 <!-- Image -->
                                 <a href="#">
                                     <img class="card-img-top card-img-back"
-                                         src="./assets/img/site/floraldress.png" width="253" height="300">
+                                         src="./assets/img/site/floraldress.png" width="253" height="300" alt="Cotton floral print Dress">
                                 </a>
 
                                 <!-- Actions -->
-                                <button class="btn btn-xs btn-circle btn-white-primary">
-                                    <i class="fe fe-eye"></i>
+                                <button type="button" class="btn btn-xs btn-circle btn-white-primary" aria-label="Quick view: Cotton floral print Dress">
+                                    <i aria-hidden="true" class="fe fe-eye"></i>
                                 </button>
 
-                                <button class="btn btn-xs btn-circle btn-white-primary">
-                                    <i class="fe fe-shopping-cart"></i>
+                                <button type="button" class="btn btn-xs btn-circle btn-white-primary" aria-label="Add to cart: Cotton floral print Dress">
+                                    <i aria-hidden="true" class="fe fe-shopping-cart"></i>
                                 </button>
 
-                                <button class="btn btn-xs btn-circle btn-white-primary">
-                                    <i class="fe fe-heart"></i>
+                                <button type="button" class="btn btn-xs btn-circle btn-white-primary" aria-label="Add to wishlist: Cotton floral print Dress">
+                                    <i aria-hidden="true" class="fe fe-heart"></i>
                                 </button>
                             </div>
 
@@ -480,11 +481,11 @@
                                 </div>
 
                                 <!-- Title -->
-                                <div class="font-weight-bold">
+                                <h3 class="product-title font-weight-bold">
                                     <a class="text-body" href="#">
                                         Cotton floral print Dress
                                     </a>
-                                </div>
+                                </h3>
 
                                 <!-- Price -->
                                 <div class="font-weight-bold text-muted">
@@ -508,20 +509,20 @@
                                 <!-- Image -->
                                 <a href="#">
                                     <img class="card-img-top card-img-back"
-                                         src="./assets/img/site/leathersneaker.png" width="253" height="300">
+                                         src="./assets/img/site/leathersneaker.png" width="253" height="300" alt="Leather Sneakers">
                                 </a>
 
                                 <!-- Actions -->
-                                <button class="btn btn-xs btn-circle btn-white-primary">
-                                    <i class="fe fe-eye"></i>
+                                <button type="button" class="btn btn-xs btn-circle btn-white-primary" aria-label="Quick view: Leather Sneakers">
+                                    <i aria-hidden="true" class="fe fe-eye"></i>
                                 </button>
 
-                                <button class="btn btn-xs btn-circle btn-white-primary">
-                                    <i class="fe fe-shopping-cart"></i>
+                                <button type="button" class="btn btn-xs btn-circle btn-white-primary" aria-label="Add to cart: Leather Sneakers">
+                                    <i aria-hidden="true" class="fe fe-shopping-cart"></i>
                                 </button>
 
-                                <button class="btn btn-xs btn-circle btn-white-primary">
-                                    <i class="fe fe-heart"></i>
+                                <button type="button" class="btn btn-xs btn-circle btn-white-primary" aria-label="Add to wishlist: Leather Sneakers">
+                                    <i aria-hidden="true" class="fe fe-heart"></i>
                                 </button>
                             </div>
 
@@ -533,16 +534,16 @@
                                 </div>
 
                                 <!-- Title -->
-                                <div class="font-weight-bold">
+                                <h3 class="product-title font-weight-bold">
                                     <a class="text-body" href="#">
                                         Leather Sneakers
                                     </a>
-                                </div>
+                                </h3>
 
                                 <!-- Price -->
                                 <div class="font-weight-bold">
-                                    <span class="font-size-xs text-gray-350 text-decoration-line-through">$85.00</span>
-                                    <span class="text-primary">$85.00</span>
+                                    <del class="font-size-xs text-gray-350"><span class="sr-hidden">Original price: </span>$85.00</del>
+                                    <ins class="text-primary text-decoration-none"><span class="sr-hidden">Sale price: </span>$85.00</ins>
                                 </div>
                             </div>
                         </div>
@@ -555,21 +556,21 @@
                                 <!-- Image -->
                                 <a href="#">
                                     <img class="card-img-top card-img-front"
-                                         src="./assets/img/site/croppedtop.png" width="253" height="300">
+                                         src="./assets/img/site/croppedtop.png" width="253" height="300" alt="Cropped cotton Top">
                                 </a>
 
                                 <!-- Actions -->
 
-                                <button class="btn btn-xs btn-circle btn-white-primary">
-                                    <i class="fe fe-eye"></i>
+                                <button type="button" class="btn btn-xs btn-circle btn-white-primary" aria-label="Quick view: Cropped cotton Top">
+                                    <i aria-hidden="true" class="fe fe-eye"></i>
                                 </button>
 
-                                <button class="btn btn-xs btn-circle btn-white-primary">
-                                    <i class="fe fe-shopping-cart"></i>
+                                <button type="button" class="btn btn-xs btn-circle btn-white-primary" aria-label="Add to cart: Cropped cotton Top">
+                                    <i aria-hidden="true" class="fe fe-shopping-cart"></i>
                                 </button>
 
-                                <button class="btn btn-xs btn-circle btn-white-primary">
-                                    <i class="fe fe-heart"></i>
+                                <button type="button" class="btn btn-xs btn-circle btn-white-primary" aria-label="Add to wishlist: Cropped cotton Top">
+                                    <i aria-hidden="true" class="fe fe-heart"></i>
                                 </button>
                             </div>
 
@@ -581,11 +582,11 @@
                                 </div>
 
                                 <!-- Title -->
-                                <div class="font-weight-bold">
+                                <h3 class="product-title font-weight-bold">
                                     <a class="text-body" href="#">
                                         Cropped cotton Top
                                     </a>
-                                </div>
+                                </h3>
 
                                 <!-- Price -->
                                 <div class="font-weight-bold text-muted">
@@ -603,20 +604,20 @@
                                 <!-- Image -->
                                 <a href="#">
                                     <img class="card-img-top card-img-front"
-                                         src="./assets/img/site/mididress.png" width="253" height="300">
+                                         src="./assets/img/site/mididress.png" width="253" height="300" alt="Floral print midi Dress">
                                 </a>
 
                                 <!-- Actions -->
-                                <button class="btn btn-xs btn-circle btn-white-primary">
-                                    <i class="fe fe-eye"></i>
+                                <button type="button" class="btn btn-xs btn-circle btn-white-primary" aria-label="Quick view: Floral print midi Dress">
+                                    <i aria-hidden="true" class="fe fe-eye"></i>
                                 </button>
 
-                                <button class="btn btn-xs btn-circle btn-white-primary">
-                                    <i class="fe fe-shopping-cart"></i>
+                                <button type="button" class="btn btn-xs btn-circle btn-white-primary" aria-label="Add to cart: Floral print midi Dress">
+                                    <i aria-hidden="true" class="fe fe-shopping-cart"></i>
                                 </button>
 
-                                <button class="btn btn-xs btn-circle btn-white-primary">
-                                    <i class="fe fe-heart"></i>
+                                <button type="button" class="btn btn-xs btn-circle btn-white-primary" aria-label="Add to wishlist: Floral print midi Dress">
+                                    <i aria-hidden="true" class="fe fe-heart"></i>
                                 </button>
                             </div>
 
@@ -628,11 +629,11 @@
                                 </div>
 
                                 <!-- Title -->
-                                <div class="font-weight-bold">
+                                <h3 class="product-title font-weight-bold">
                                     <a class="text-body" href="#">
                                         Floral print midi Dress
                                     </a>
-                                </div>
+                                </h3>
 
                                 <!-- Price -->
                                 <div class="font-weight-bold text-muted">
@@ -657,20 +658,20 @@
                                 <!-- Image -->
                                 <a href="product.html">
                                     <img class="card-img-top card-img-back" src="./assets/img/site/suedebag.png"
-                                         width="253" height="300">
+                                         width="253" height="300" alt="Suede cross body Bag">
                                 </a>
 
                                 <!-- Actions -->
-                                <button class="btn btn-xs btn-circle btn-white-primary">
-                                    <i class="fe fe-eye"></i>
+                                <button type="button" class="btn btn-xs btn-circle btn-white-primary" aria-label="Quick view: Suede cross body Bag">
+                                    <i aria-hidden="true" class="fe fe-eye"></i>
                                 </button>
 
-                                <button class="btn btn-xs btn-circle btn-white-primary">
-                                    <i class="fe fe-shopping-cart"></i>
+                                <button type="button" class="btn btn-xs btn-circle btn-white-primary" aria-label="Add to cart: Suede cross body Bag">
+                                    <i aria-hidden="true" class="fe fe-shopping-cart"></i>
                                 </button>
 
-                                <button class="btn btn-xs btn-circle btn-white-primary">
-                                    <i class="fe fe-heart"></i>
+                                <button type="button" class="btn btn-xs btn-circle btn-white-primary" aria-label="Add to wishlist: Suede cross body Bag">
+                                    <i aria-hidden="true" class="fe fe-heart"></i>
                                 </button>
                             </div>
 
@@ -683,16 +684,16 @@
                                 </div>
 
                                 <!-- Title -->
-                                <div class="font-weight-bold">
+                                <h3 class="product-title font-weight-bold">
                                     <a class="text-body" href="#">
                                         Suede cross body Bag
                                     </a>
-                                </div>
+                                </h3>
 
                                 <!-- Price -->
                                 <div class="font-weight-bold">
-                                    <span class="font-size-xs text-gray-350 text-decoration-line-through">$79.00</span>
-                                    <span class="text-primary">$49.00</span>
+                                    <del class="font-size-xs text-gray-350"><span class="sr-hidden">Original price: </span>$79.00</del>
+                                    <ins class="text-primary text-decoration-none"><span class="sr-hidden">Sale price: </span>$49.00</ins>
                                 </div>
                             </div>
                         </div>
@@ -705,21 +706,21 @@
                                 <!-- Image -->
                                 <a href="product.html">
                                     <img class="card-img-top card-img-back"
-                                         src="./assets/img/site/alineskirt.png" width="253" height="300">
+                                         src="./assets/img/site/alineskirt.png" width="253" height="300" alt="Printed A-line Skirt">
                                 </a>
 
                                 <!-- Actions -->
 
-                                <button class="btn btn-xs btn-circle btn-white-primary">
-                                    <i class="fe fe-eye"></i>
+                                <button type="button" class="btn btn-xs btn-circle btn-white-primary" aria-label="Quick view: Printed A-line Skirt">
+                                    <i aria-hidden="true" class="fe fe-eye"></i>
                                 </button>
 
-                                <button class="btn btn-xs btn-circle btn-white-primary">
-                                    <i class="fe fe-shopping-cart"></i>
+                                <button type="button" class="btn btn-xs btn-circle btn-white-primary" aria-label="Add to cart: Printed A-line Skirt">
+                                    <i aria-hidden="true" class="fe fe-shopping-cart"></i>
                                 </button>
 
-                                <button class="btn btn-xs btn-circle btn-white-primary">
-                                    <i class="fe fe-heart"></i>
+                                <button type="button" class="btn btn-xs btn-circle btn-white-primary" aria-label="Add to wishlist: Printed A-line Skirt">
+                                    <i aria-hidden="true" class="fe fe-heart"></i>
                                 </button>
                             </div>
 
@@ -731,11 +732,11 @@
                                 </div>
 
                                 <!-- Title -->
-                                <div class="font-weight-bold">
+                                <h3 class="product-title font-weight-bold">
                                     <a class="text-body" href="#">
                                         Printed A-line Skirt
                                     </a>
-                                </div>
+                                </h3>
 
                                 <!-- Price -->
                                 <div class="font-weight-bold text-muted">
@@ -757,20 +758,20 @@
                                 <!-- Image -->
                                 <a href="#">
                                     <img class="card-img-top card-img-front"
-                                         src="./assets/img/site/strappysandals.png" width="253" height="300">
+                                         src="./assets/img/site/strappysandals.png" width="253" height="300" alt="Heel strappy Sandals">
                                 </a>
 
                                 <!-- Actions -->
-                                <button class="btn btn-xs btn-circle btn-white-primary">
-                                    <i class="fe fe-eye"></i>
+                                <button type="button" class="btn btn-xs btn-circle btn-white-primary" aria-label="Quick view: Heel strappy Sandals">
+                                    <i aria-hidden="true" class="fe fe-eye"></i>
                                 </button>
 
-                                <button class="btn btn-xs btn-circle btn-white-primary">
-                                    <i class="fe fe-shopping-cart"></i>
+                                <button type="button" class="btn btn-xs btn-circle btn-white-primary" aria-label="Add to cart: Heel strappy Sandals">
+                                    <i aria-hidden="true" class="fe fe-shopping-cart"></i>
                                 </button>
 
-                                <button class="btn btn-xs btn-circle btn-white-primary">
-                                    <i class="fe fe-heart"></i>
+                                <button type="button" class="btn btn-xs btn-circle btn-white-primary" aria-label="Add to wishlist: Heel strappy Sandals">
+                                    <i aria-hidden="true" class="fe fe-heart"></i>
                                 </button>
                             </div>
 
@@ -782,11 +783,11 @@
                                 </div>
 
                                 <!-- Title -->
-                                <div class="font-weight-bold">
+                                <h3 class="product-title font-weight-bold">
                                     <a class="text-body" href="#">
                                         Heel strappy Sandals
                                     </a>
-                                </div>
+                                </h3>
 
                                 <!-- Price -->
                                 <div class="font-weight-bold text-muted">
@@ -813,9 +814,9 @@
                 </div>
 
                 <!-- Heading -->
-                <div class="h2 mb-10">
+                <h2 class="h2 mb-10">
                     Latest Buyers Reviews
-                </div>
+                </h2>
             </div>
         </div>
         <div class="row">
@@ -829,7 +830,7 @@
                             <div class="col-4">
                                 <!-- Image -->
                                 <img src="./assets/img/site/smallsneakers.png" class="img-fluid" width="73"
-                                     height="73">
+                                     height="73" alt="">
                             </div>
                             <div class="col-8 ml-n2">
                                 <!-- Preheading -->
@@ -839,43 +840,45 @@
                                     </a>
 
                                     <!-- Heading -->
-                                    <a class="d-block font-weight-bold text-body" href="#">
+                                    <h3 class="mb-0"><a class="d-block font-weight-bold text-body" href="#">
                                         Low top Sneakers
-                                    </a>
+                                    </a></h3>
                                 </div>
                                 <!-- Rating -->
-                                <div class="rating font-size-xxs text-warning">
+                                <div class="rating font-size-xxs text-warning" role="img" aria-label="Rated 5 out of 5">
                                     <div class="rating-item">
-                                        <i class="fas fa-star"></i>
+                                        <i aria-hidden="true" class="fas fa-star"></i>
                                     </div>
                                     <div class="rating-item">
-                                        <i class="fas fa-star"></i>
+                                        <i aria-hidden="true" class="fas fa-star"></i>
                                     </div>
                                     <div class="rating-item">
-                                        <i class="fas fa-star"></i>
+                                        <i aria-hidden="true" class="fas fa-star"></i>
                                     </div>
                                     <div class="rating-item">
-                                        <i class="fas fa-star"></i>
+                                        <i aria-hidden="true" class="fas fa-star"></i>
                                     </div>
                                     <div class="rating-item">
-                                        <i class="fas fa-star"></i>
+                                        <i aria-hidden="true" class="fas fa-star"></i>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Blockquote -->
-                        <div class="mb-0">
-                            <p class="text-muted">
+                        <figure class="mb-0">
+                            <blockquote class="mb-0">
+                                <p class="text-muted">
                                 These sneakers are just what I needed! they have a mixture of fabrics, and provide
                                 fantastic heel support. The underside however, has a hard wearing sole which becomes
                                 slippery in the rain.
                             </p>
-                            <div class="font-size-xs text-muted">
+                            </blockquote>
+                            <figcaption class="font-size-xs text-muted">
                                 Logan Edwards,
                                 <time datetime="2019-06-01">01 Jun 2019</time>
-                            </div>
-                        </div>
+                            </figcaption>
+                        </figure>
                     </div>
                 </div>
             </div>
@@ -890,7 +893,7 @@
                             <div class="col-4">
                                 <!-- Image -->
                                 <img src="./assets/img/site/cottondress.png" class="img-fluid" width="73"
-                                     height="73">
+                                     height="73" alt="">
                             </div>
                             <div class="col-8 ml-n2">
                                 <!-- Preheading -->
@@ -900,26 +903,26 @@
                                     </a>
 
                                     <!-- Heading -->
-                                    <a class="d-block font-weight-bold text-body" href="#">
+                                    <h3 class="mb-0"><a class="d-block font-weight-bold text-body" href="#">
                                         Cotton print Dress
-                                    </a>
+                                    </a></h3>
                                 </div>
                                 <!-- Rating -->
-                                <div class="rating font-size-xxs text-warning">
+                                <div class="rating font-size-xxs text-warning" role="img" aria-label="Rated 5 out of 5">
                                     <div class="rating-item">
-                                        <i class="fas fa-star"></i>
+                                        <i aria-hidden="true" class="fas fa-star"></i>
                                     </div>
                                     <div class="rating-item">
-                                        <i class="fas fa-star"></i>
+                                        <i aria-hidden="true" class="fas fa-star"></i>
                                     </div>
                                     <div class="rating-item">
-                                        <i class="fas fa-star"></i>
+                                        <i aria-hidden="true" class="fas fa-star"></i>
                                     </div>
                                     <div class="rating-item">
-                                        <i class="fas fa-star"></i>
+                                        <i aria-hidden="true" class="fas fa-star"></i>
                                     </div>
                                     <div class="rating-item">
-                                        <i class="fas fa-star"></i>
+                                        <i aria-hidden="true" class="fas fa-star"></i>
                                     </div>
                                 </div>
 
@@ -927,17 +930,19 @@
                         </div>
 
                         <!-- Blockquote -->
-                        <div class="mb-0">
-                            <p class="text-muted">
+                        <figure class="mb-0">
+                            <blockquote class="mb-0">
+                                <p class="text-muted">
                                 The print on the dress is just what I've been looking for. It has several layers and
                                 goes from near transparent to opaque and then a dark colour. The cut is very
                                 complementary as well, loose and functional but can be dressed up for events.
                             </p>
-                            <div class="font-size-xs text-muted">
+                            </blockquote>
+                            <figcaption class="font-size-xs text-muted">
                                 Jane Jefferson,
                                 <time datetime="2019-05-29">29 May 2019</time>
-                            </div>
-                        </div>
+                            </figcaption>
+                        </figure>
                     </div>
                 </div>
 
@@ -952,7 +957,7 @@
                         <div class="row align-items-center mb-6">
                             <div class="col-4">
                                 <!-- Image -->
-                                <img src="./assets/img/site/tshirt.png" class="img-fluid" width="73" height="73">
+                                <img src="./assets/img/site/tshirt.png" class="img-fluid" width="73" height="73" alt="">
                             </div>
                             <div class="col-8 ml-n2">
                                 <!-- Preheading -->
@@ -962,42 +967,44 @@
                                     </a>
 
                                     <!-- Heading -->
-                                    <a class="d-block font-weight-bold text-body" href="#">
+                                    <h3 class="mb-0"><a class="d-block font-weight-bold text-body" href="#">
                                         Oversized print T-shirt
-                                    </a>
+                                    </a></h3>
                                 </div>
                                 <!-- Rating -->
-                                <div class="rating font-size-xxs text-warning">
+                                <div class="rating font-size-xxs text-warning" role="img" aria-label="Rated 5 out of 5">
                                     <div class="rating-item">
-                                        <i class="fas fa-star"></i>
+                                        <i aria-hidden="true" class="fas fa-star"></i>
                                     </div>
                                     <div class="rating-item">
-                                        <i class="fas fa-star"></i>
+                                        <i aria-hidden="true" class="fas fa-star"></i>
                                     </div>
                                     <div class="rating-item">
-                                        <i class="fas fa-star"></i>
+                                        <i aria-hidden="true" class="fas fa-star"></i>
                                     </div>
                                     <div class="rating-item">
-                                        <i class="fas fa-star"></i>
+                                        <i aria-hidden="true" class="fas fa-star"></i>
                                     </div>
                                     <div class="rating-item">
-                                        <i class="fas fa-star"></i>
+                                        <i aria-hidden="true" class="fas fa-star"></i>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Blockquote -->
-                        <div class="mb-0">
-                            <p class="text-muted">
+                        <figure class="mb-0">
+                            <blockquote class="mb-0">
+                                <p class="text-muted">
                                 The t-shirt wasn't as oversized as I was expecting. It pulls around the arms, and
                                 bunches up around the waist. I've noticed the colour beginning to fade to a grey.
                             </p>
-                            <div class="font-size-xs text-muted">
+                            </blockquote>
+                            <figcaption class="font-size-xs text-muted">
                                 Darrell Baker,
                                 <time datetime="2019-05-18">18 May 2019</time>
-                            </div>
-                        </div>
+                            </figcaption>
+                        </figure>
                     </div>
                 </div>
             </div>
@@ -1011,7 +1018,7 @@
         <div class="row">
             <div class="col-12 text-center">
                 <!-- Heading -->
-                <div class="mb-3 h2">ACME brands</div>
+                <h2 class="mb-3 h2">ACME brands</h2>
 
                 <!-- Subheading -->
                 <p class="mb-10 font-size-lg text-gray-500">
@@ -1025,12 +1032,12 @@
                 <!-- Card -->
                 <div class="card mb-2">
                     <!-- Image -->
-                    <img src="./assets/img/products/product-16.jpg" class="card-img">
+                    <img src="./assets/img/products/product-16.jpg" class="card-img" alt="">
 
                     <!-- Overlay -->
                     <a class="card-img-overlay align-items-center bg-dark-40" href="#">
                         <p class="my-0 font-size-xxs text-center text-white">
-                            <i class="fe fe-heart mr-2"></i> 248 <i class="fe fe-message-square mr-2 ml-3"></i> 3
+                            <span class="sr-hidden">View post: </span><i aria-hidden="true" class="fe fe-heart mr-2"></i> 248<span class="sr-hidden"> likes,</span> <i aria-hidden="true" class="fe fe-message-square mr-2 ml-3"></i> 3<span class="sr-hidden"> comments</span>
                         </p>
                     </a>
                 </div>
@@ -1040,12 +1047,12 @@
                 <div class="card mb-2">
 
                     <!-- Image -->
-                    <img src="./assets/img/products/product-17.jpg" class="card-img">
+                    <img src="./assets/img/products/product-17.jpg" class="card-img" alt="">
 
                     <!-- Overlay -->
                     <a class="card-img-overlay align-items-center bg-dark-40" href="#">
                         <p class="my-0 font-size-xxs text-center text-white">
-                            <i class="fe fe-heart mr-2"></i> 967 <i class="fe fe-message-square mr-2 ml-3"></i> 8
+                            <span class="sr-hidden">View post: </span><i aria-hidden="true" class="fe fe-heart mr-2"></i> 967<span class="sr-hidden"> likes,</span> <i aria-hidden="true" class="fe fe-message-square mr-2 ml-3"></i> 8<span class="sr-hidden"> comments</span>
                         </p>
                     </a>
 
@@ -1056,12 +1063,12 @@
                 <div class="card mb-2">
 
                     <!-- Image -->
-                    <img src="./assets/img/products/product-18.jpg" class="card-img">
+                    <img src="./assets/img/products/product-18.jpg" class="card-img" alt="">
 
                     <!-- Overlay -->
                     <a class="card-img-overlay align-items-center bg-dark-40" href="#">
                         <p class="my-0 font-size-xxs text-center text-white">
-                            <i class="fe fe-heart mr-2"></i> 685 <i class="fe fe-message-square mr-2 ml-3"></i> 12
+                            <span class="sr-hidden">View post: </span><i aria-hidden="true" class="fe fe-heart mr-2"></i> 685<span class="sr-hidden"> likes,</span> <i aria-hidden="true" class="fe fe-message-square mr-2 ml-3"></i> 12<span class="sr-hidden"> comments</span>
                         </p>
                     </a>
                 </div>
@@ -1071,12 +1078,12 @@
                 <div class="card mb-2">
 
                     <!-- Image -->
-                    <img src="./assets/img/products/product-19.jpg" class="card-img">
+                    <img src="./assets/img/products/product-19.jpg" class="card-img" alt="">
 
                     <!-- Overlay -->
                     <a class="card-img-overlay align-items-center bg-dark-40" href="#">
                         <p class="my-0 font-size-xxs text-center text-white">
-                            <i class="fe fe-heart mr-2"></i> 124 <i class="fe fe-message-square mr-2 ml-3"></i> 3
+                            <span class="sr-hidden">View post: </span><i aria-hidden="true" class="fe fe-heart mr-2"></i> 124<span class="sr-hidden"> likes,</span> <i aria-hidden="true" class="fe fe-message-square mr-2 ml-3"></i> 3<span class="sr-hidden"> comments</span>
                         </p>
                     </a>
 
@@ -1089,12 +1096,12 @@
                 <div class="card">
 
                     <!-- Image -->
-                    <img src="./assets/img/products/product-20.jpg" class="card-img">
+                    <img src="./assets/img/products/product-20.jpg" class="card-img" alt="">
 
                     <!-- Overlay -->
                     <a class="card-img-overlay align-items-center bg-dark-40" href="#">
                         <p class="my-0 font-size-xxs text-center text-white">
-                            <i class="fe fe-heart mr-2"></i> 356 <i class="fe fe-message-square mr-2 ml-3"></i> 87
+                            <span class="sr-hidden">View post: </span><i aria-hidden="true" class="fe fe-heart mr-2"></i> 356<span class="sr-hidden"> likes,</span> <i aria-hidden="true" class="fe fe-message-square mr-2 ml-3"></i> 87<span class="sr-hidden"> comments</span>
                         </p>
                     </a>
 
@@ -1106,12 +1113,12 @@
                 <div class="card">
 
                     <!-- Image -->
-                    <img src="./assets/img/products/product-21.jpg" class="card-img">
+                    <img src="./assets/img/products/product-21.jpg" class="card-img" alt="">
 
                     <!-- Overlay -->
                     <a class="card-img-overlay align-items-center bg-dark-40" href="#">
                         <p class="my-0 font-size-xxs text-center text-white">
-                            <i class="fe fe-heart mr-2"></i> 868 <i class="fe fe-message-square mr-2 ml-3"></i> 47
+                            <span class="sr-hidden">View post: </span><i aria-hidden="true" class="fe fe-heart mr-2"></i> 868<span class="sr-hidden"> likes,</span> <i aria-hidden="true" class="fe fe-message-square mr-2 ml-3"></i> 47<span class="sr-hidden"> comments</span>
                         </p>
                     </a>
 
@@ -1121,54 +1128,57 @@
         <div class="row">
             <div class="col-4 col-sm-3 col-md text-center">
                 <!-- Brand -->
-                <img src="./assets/img/brands/gray-350/mango.svg" class="img-fluid mb-7 mb-md-0">
+                <img src="./assets/img/brands/gray-350/mango.svg" class="img-fluid mb-7 mb-md-0" alt="Mango">
             </div>
             <div class="col-4 col-sm-3 col-md text-center">
                 <!-- Brand -->
-                <img src="./assets/img/brands/gray-350/zara.svg" class="img-fluid mb-7 mb-md-0">
+                <img src="./assets/img/brands/gray-350/zara.svg" class="img-fluid mb-7 mb-md-0" alt="Zara">
             </div>
             <div class="col-4 col-sm-3 col-md text-center">
                 <!-- Brand -->
-                <img src="./assets/img/brands/gray-350/reebok.svg" class="img-fluid mb-7 mb-md-0">
+                <img src="./assets/img/brands/gray-350/reebok.svg" class="img-fluid mb-7 mb-md-0" alt="Reebok">
             </div>
             <div class="col-4 col-sm-3 col-md text-center">
                 <!-- Brand -->
-                <img src="./assets/img/brands/gray-350/asos.svg" class="img-fluid mb-7 mb-md-0">
+                <img src="./assets/img/brands/gray-350/asos.svg" class="img-fluid mb-7 mb-md-0" alt="ASOS">
             </div>
             <div class="col-4 col-sm-3 col-md text-center">
                 <!-- Brand -->
-                <img src="./assets/img/brands/gray-350/stradivarius.svg" class="img-fluid mb-6 mb-sm-0">
+                <img src="./assets/img/brands/gray-350/stradivarius.svg" class="img-fluid mb-6 mb-sm-0" alt="Stradivarius">
             </div>
             <div class="col-4 col-sm-3 col-md text-center">
                 <!-- Brand -->
-                <img src="./assets/img/brands/gray-350/adidas.svg" class="img-fluid mb-6 mb-sm-0">
+                <img src="./assets/img/brands/gray-350/adidas.svg" class="img-fluid mb-6 mb-sm-0" alt="Adidas">
             </div>
             <div class="col-4 col-sm-3 col-md text-center">
                 <!-- Brand -->
-                <img src="./assets/img/brands/gray-350/bershka.svg" class="img-fluid">
+                <img src="./assets/img/brands/gray-350/bershka.svg" class="img-fluid" alt="Bershka">
             </div>
         </div>
     </div>
 </div>
 
+</main>
+
 <!-- FOOTER -->
-<div class="bg-dark bg-cover footer">
+<footer class="bg-dark bg-cover footer">
     <div class="py-12 border-bottom border-gray-700">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-10 col-lg-8 col-xl-6">
 
                     <!-- Heading -->
-                    <div class="h5 mb-7 text-center text-white">Want the latest style ideas and fashion advice in your
+                    <h2 class="h5 mb-7 text-center text-white">Want the latest style ideas and fashion advice in your
                         inbox?
-                    </div>
+                    </h2>
 
                     <!-- Form -->
                     <form class="mb-11">
                         <div class="form-row align-items-start">
                             <div class="col">
-                                <input type="email" class="form-control form-control-gray-700 form-control-lg"
-                                       placeholder="Enter Email *">
+                                <label for="newsletter-email" class="sr-hidden">Email address (required)</label>
+                                <input type="email" id="newsletter-email" class="form-control form-control-gray-700 form-control-lg"
+                                       placeholder="Enter Email *" required autocomplete="email">
                             </div>
                             <div class="col-auto">
                                 <button type="submit" class="btn btn-gray-500 btn-lg">Subscribe</button>
@@ -1180,60 +1190,60 @@
             <div class="row">
                 <div class="col-12 col-md-3">
                     <!-- Heading -->
-                    <img src="./assets/img/site/logobw.png" width="205" height="81">
+                    <img src="./assets/img/site/logobw.png" width="205" height="81" alt="ACME Fashion House">
                 </div>
                 <div class="col-6 col-sm">
 
                     <!-- Heading -->
                     <div class="heading-xxs mb-4 text-white">
-                        <div>Support</div>
+                        <h2 id="footer-support">Support</h2>
                     </div>
-
-                    <div><a class="text-gray-300" tabindex="1" href="#">Contact Us</a></div>
-                    <div><a class="text-gray-300" tabindex="2" href="#">FAQs</a></div>
-                    <div><a class="text-gray-300" tabindex="3" href="#">Size Guide</a></div>
-                    <div><a class="text-gray-300" tabindex="4" href="#">Shipping & Returns</a></div>
-
+                    <ul class="list-unstyled" aria-labelledby="footer-support">
+                        <li><a class="text-gray-300" href="#">Contact Us</a></li>
+                        <li><a class="text-gray-300" href="#">FAQs</a></li>
+                        <li><a class="text-gray-300" href="#">Size Guide</a></li>
+                        <li><a class="text-gray-300" href="#">Shipping & Returns</a></li>
+                    </ul>
                 </div>
                 <div class="col-6 col-sm">
 
                     <!-- Heading -->
                     <div class="heading-xxs mb-4 text-white">
-                        <div>Shop</div>
+                        <h2 id="footer-shop">Shop</h2>
                     </div>
-
-                    <div><a class="text-gray-300" tabindex="5" href="#">Men's Shopping</a></div>
-                    <div><a class="text-gray-300" tabindex="6" href="#">Women's Shopping</a></div>
-                    <div><a class="text-gray-300" tabindex="7" href="#">Kids' Shopping</a></div>
-                    <div><a class="text-gray-300" tabindex="8" href="#">Discounts</a></div>
-
+                    <ul class="list-unstyled" aria-labelledby="footer-shop">
+                        <li><a class="text-gray-300" href="#">Men's Shopping</a></li>
+                        <li><a class="text-gray-300" href="#">Women's Shopping</a></li>
+                        <li><a class="text-gray-300" href="#">Kids' Shopping</a></li>
+                        <li><a class="text-gray-300" href="#">Discounts</a></li>
+                    </ul>
                 </div>
                 <div class="col-6 col-sm">
 
                     <!-- Heading -->
                     <div class="heading-xxs mb-4 text-white">
-                        <div>Company</div>
+                        <h2 id="footer-company">Company</h2>
                     </div>
-
-                    <div><a class="text-gray-300" tabindex="9" href="#">How we work</a></div>
-                    <div><a class="text-gray-300" tabindex="10" href="#">Achievements</a></div>
-                    <div><a class="text-gray-300" tabindex="11" href="#">Our Mission</a></div>
-                    <div><a class="text-gray-300" tabindex="12" href="#">Meet the Team</a></div>
-                    <div><a class="text-gray-300" tabindex="13" href="#">Web accessibility policy</a></div>
-
+                    <ul class="list-unstyled" aria-labelledby="footer-company">
+                        <li><a class="text-gray-300" href="#">How we work</a></li>
+                        <li><a class="text-gray-300" href="#">Achievements</a></li>
+                        <li><a class="text-gray-300" href="#">Our Mission</a></li>
+                        <li><a class="text-gray-300" href="#">Meet the Team</a></li>
+                        <li><a class="text-gray-300" href="#">Web accessibility policy</a></li>
+                    </ul>
                 </div>
                 <div class="col-6 col-sm">
 
                     <!-- Heading -->
                     <div class="heading-xxs mb-4 text-white">
-                        <div>Contact</div>
+                        <h2 id="footer-contact">Contact</h2>
                     </div>
-
-                    <div><a class="text-gray-300" tabindex="14" href="#">Contact Us</a></div>
-                    <div><a class="text-gray-300" tabindex="15" href="#">Become a Dealer</a></div>
-                    <div><a class="text-gray-300" tabindex="16" href="#">+61 1234 567890</a></div>
-                    <div><a class="text-gray-300" tabindex="17" href="#">hello@canaxess.com.au</a></div>
-
+                    <ul class="list-unstyled" aria-labelledby="footer-contact">
+                        <li><a class="text-gray-300" href="#">Contact Us</a></li>
+                        <li><a class="text-gray-300" href="#">Become a Dealer</a></li>
+                        <li><a class="text-gray-300" href="#">+61 1234 567890</a></li>
+                        <li><a class="text-gray-300" href="#">hello@canaxess.com.au</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -1243,17 +1253,18 @@
                     <div class="col-auto">
 
                         <!-- Payment methods -->
-                        <img class="footer-payment" src="./assets/img/payment/mastercard.svg">
-                        <img class="footer-payment" src="./assets/img/payment/visa.svg">
-                        <img class="footer-payment" src="./assets/img/payment/amex.svg">
-                        <img class="footer-payment" src="./assets/img/payment/paypal.svg">
-                        <img class="footer-payment" src="./assets/img/payment/maestro.svg">
-                        <img class="footer-payment" src="./assets/img/payment/klarna.svg">
+                        <img class="footer-payment" src="./assets/img/payment/mastercard.svg" alt="Mastercard">
+                        <img class="footer-payment" src="./assets/img/payment/visa.svg" alt="Visa">
+                        <img class="footer-payment" src="./assets/img/payment/amex.svg" alt="American Express">
+                        <img class="footer-payment" src="./assets/img/payment/paypal.svg" alt="PayPal">
+                        <img class="footer-payment" src="./assets/img/payment/maestro.svg" alt="Maestro">
+                        <img class="footer-payment" src="./assets/img/payment/klarna.svg" alt="Klarna">
 
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</footer>
 </body>
 </html>
