@@ -1,0 +1,150 @@
+<!doctype html><html lang="uk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=1024"><title>Комора · планшет</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+ --bg:#EEF1EC;--surface:#FFFFFF;--ink:#17211D;--ink2:#3F4B46;--muted:#5F6B66;--line:#D9E0DB;
+ --primary:#1F5F4A;--primary-press:#174A39;--primary-soft:#E2EEE8;--on-primary:#FFFFFF;
+ --ok:#256B43;--ok-bg:#E3F1E8;--low:#7A4F00;--low-bg:#FCEFD3;--low-line:#E9B64B;--out:#A8201A;--out-bg:#FCE6E4;
+ --r-s:10px;--r-m:14px;--r-l:20px;--sp:4px;
+ --font:'Manrope',system-ui,sans-serif;
+}
+body{font-family:var(--font);color:var(--ink);background:#C9D1CC;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+svg.i{width:22px;height:22px;stroke-width:2;flex:none}
+.frame{position:relative;overflow:hidden;background:var(--bg)}
+.phone{width:390px;height:844px}
+.status{height:47px;display:flex;align-items:center;justify-content:space-between;padding:0 30px 0 34px;font-weight:700;font-size:15px}
+.status .r{display:flex;gap:6px;align-items:center}.status .r i{display:block;width:17px;height:11px;border-radius:2px;background:var(--ink)}
+.status .r b{display:block;width:24px;height:12px;border:1.5px solid var(--ink);border-radius:4px;position:relative}.status .r b:after{content:"";position:absolute;inset:1.5px 5px 1.5px 1.5px;background:var(--ink);border-radius:1.5px}
+.homeind{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:134px;height:5px;border-radius:3px;background:var(--ink)}
+.appbar{display:flex;align-items:center;gap:8px;padding:6px 16px 10px;min-height:52px}
+.appbar h1{font-size:20px;font-weight:800;letter-spacing:-.01em;flex:1}
+.appbar .sub{font-size:13px;color:var(--muted);font-weight:600}
+.iconbtn{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--ink);position:relative;background:transparent}
+.iconbtn .dot{position:absolute;top:9px;right:9px;min-width:16px;height:16px;border-radius:8px;background:var(--out);color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;padding:0 4px;border:2px solid var(--bg)}
+.greet{padding:4px 16px 12px}.greet small{display:block;font-size:14px;color:var(--muted);font-weight:600;margin-bottom:2px}.greet h1{font-size:28px;font-weight:800;letter-spacing:-.02em;line-height:1.15}
+.search{margin:0 16px 14px;height:48px;border-radius:var(--r-m);background:var(--surface);border:1.5px solid var(--line);display:flex;align-items:center;gap:10px;padding:0 14px;color:var(--muted);font-size:15.5px;font-weight:500}
+.search.focus{border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-soft);color:var(--ink)}
+.search .caret{display:inline-block;width:2px;height:20px;background:var(--primary);margin-left:-8px}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 16px 18px}
+.tile{background:var(--surface);border-radius:var(--r-m);padding:12px 12px 11px;border:1px solid var(--line)}
+.tile b{white-space:nowrap;display:block;font-size:24px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.tile span{font-size:12.5px;color:var(--muted);font-weight:600;line-height:1.25;display:block;margin-top:4px}
+.tile.warn{background:var(--low-bg);border-color:var(--low-line)}.tile.warn b,.tile.warn span{color:var(--low)}
+.sec{display:flex;align-items:baseline;justify-content:space-between;padding:0 16px 8px}
+.sec h2{font-size:17px;font-weight:800}.sec a{font-size:14px;font-weight:700;color:var(--primary);text-decoration:none}
+.list{margin:0 16px 18px;background:var(--surface);border-radius:var(--r-m);border:1px solid var(--line);overflow:hidden}
+.row{display:flex;align-items:center;gap:12px;padding:11px 12px;min-height:64px;border-top:1px solid var(--line)}
+.row:first-child{border-top:none}
+.thumb{width:44px;height:44px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;color:#3F4B46}
+.t1{background:#F3E1E6}.t2{background:#DDE8F5}.t3{background:#F5E9D4}.t4{background:#E3EDDC}
+.row .tx{flex:1;min-width:0}
+.row .tx b{display:block;font-size:15px;font-weight:700;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .tx span{display:block;font-size:13px;color:var(--muted);font-weight:500;margin-top:1px}
+.row .end{text-align:right;flex:none}
+.row .end b{display:block;font-size:15px;font-weight:800}
+.row.disabled .tx b,.row.disabled .thumb{opacity:.55}
+.row.sel{background:var(--primary-soft)}
+.badge{display:inline-flex;align-items:center;gap:5px;height:26px;padding:0 10px;border-radius:999px;font-size:13px;font-weight:800;white-space:nowrap}
+.badge:before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.badge.ok{background:var(--ok-bg);color:var(--ok)}.badge.low{background:var(--low-bg);color:var(--low)}.badge.out{background:var(--out-bg);color:var(--out)}
+.badge.neutral{background:#E9EDEA;color:var(--ink2)}.badge.neutral:before{display:none}
+.st{font-size:12.5px;font-weight:700;border-radius:6px;padding:3px 7px}
+.st.new{background:var(--primary-soft);color:var(--primary)}.st.sent{background:#E6ECF6;color:#2D4A7A}.st.done{background:#ECEEEC;color:var(--ink2)}
+.fab{position:absolute;right:16px;bottom:96px;height:56px;border-radius:18px;background:var(--primary);color:var(--on-primary);display:flex;align-items:center;gap:8px;padding:0 20px 0 16px;font-weight:800;font-size:16px;box-shadow:0 6px 16px rgba(23,74,57,.35)}
+.fab svg{width:24px;height:24px}
+.nav{position:absolute;left:0;right:0;bottom:0;height:86px;background:var(--surface);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);padding-top:8px}
+.nav div{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:12px;font-weight:700;color:var(--muted)}
+.nav div.on{color:var(--primary)}.nav div.on svg{background:var(--primary-soft);border-radius:12px;width:52px;padding:3px 13px;height:28px;box-sizing:border-box}
+.nav svg{height:28px;width:24px;padding:3px 0}
+.btn{height:52px;border-radius:var(--r-m);display:flex;align-items:center;justify-content:center;gap:8px;font-weight:800;font-size:16px;border:none;font-family:var(--font);padding:0 20px;white-space:nowrap}
+.btn.primary{background:var(--primary);color:var(--on-primary)}
+.btn.primary.pressed{background:var(--primary-press)}
+.btn.primary.disabled{background:#C8D1CC;color:#5F6B66}
+.btn.secondary{background:var(--surface);color:var(--primary);border:1.5px solid var(--primary)}
+.btn.ghost{background:transparent;color:var(--primary)}
+.btn.danger{background:transparent;color:var(--out)}
+.btn.sm{height:40px;font-size:14px;padding:0 14px;border-radius:12px}
+.stepper{display:flex;align-items:center;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);height:40px}
+.stepper span{width:36px;height:100%;display:flex;align-items:center;justify-content:center;color:var(--primary)}
+.stepper span svg{width:18px;height:18px}
+.stepper b{min-width:26px;text-align:center;font-size:16px;font-weight:800}
+.stepper.on{border-color:var(--primary);background:var(--surface)}
+.addbtn{width:40px;height:40px;border-radius:12px;background:var(--primary-soft);color:var(--primary);display:flex;align-items:center;justify-content:center}
+.bottombar{position:absolute;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);padding:12px 16px 34px;display:flex;align-items:center;gap:12px}
+.bottombar .sum{flex:1}.bottombar .sum b{display:block;font-size:20px;font-weight:800}.bottombar .sum span{font-size:13px;color:var(--muted);font-weight:600}
+.steps{display:flex;gap:6px;padding:0 16px 14px}.steps i{height:4px;flex:1;border-radius:2px;background:var(--line)}.steps i.on{background:var(--primary)}
+.group{padding:0 16px 16px}
+.label{font-size:14px;font-weight:700;color:var(--ink2);margin-bottom:8px;display:flex;justify-content:space-between}
+.label em{font-style:normal;font-weight:600;color:var(--muted)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{height:40px;padding:0 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);display:flex;align-items:center;gap:6px;font-weight:700;font-size:14.5px;color:var(--ink2)}
+.chip.on{background:var(--primary);border-color:var(--primary);color:#fff}
+.chip.on svg{width:16px;height:16px}
+.input{height:50px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);padding:0 14px;display:flex;align-items:center;gap:10px;font-size:15.5px;font-weight:500;margin-bottom:8px}
+.input .ph{color:var(--muted)}
+.input.err{border-color:var(--out);background:#FFF9F8}
+.input.focus{border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-soft)}
+.input.dis{background:#F1F3F1;color:#8A948F}
+.hint{font-size:13px;font-weight:600;color:var(--out);margin:-2px 0 8px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:14px}
+.line{display:flex;justify-content:space-between;align-items:center;font-size:15px;padding:6px 0;gap:10px}
+.line b{font-weight:800}
+.notice{display:flex;gap:10px;align-items:flex-start;border-radius:12px;padding:12px;font-size:14px;font-weight:600;line-height:1.4}
+.notice.info{background:var(--primary-soft);color:var(--primary-press)}
+.notice.warn{background:var(--low-bg);color:var(--low)}
+.notice.err{background:var(--out-bg);color:var(--out)}
+.notice svg{width:20px;height:20px;margin-top:1px}
+.delta{display:flex;align-items:center;gap:8px;font-weight:800;font-size:15px}
+.delta s{color:var(--muted);text-decoration:none;font-weight:700}
+.sk{background:linear-gradient(90deg,#E3E8E4,#F1F4F1,#E3E8E4);border-radius:8px}
+.empty{text-align:center;padding:24px 28px}
+.empty .pic{width:120px;height:120px;border-radius:32px;background:var(--primary-soft);margin:0 auto 18px;display:flex;align-items:center;justify-content:center;color:var(--primary)}
+.empty .pic svg{width:56px;height:56px;stroke-width:1.6}
+.empty h2{font-size:22px;font-weight:800;margin-bottom:8px}
+.empty p{font-size:15px;color:var(--muted);line-height:1.5;font-weight:500;margin-bottom:20px}
+.toast{position:absolute;left:16px;right:16px;bottom:110px;background:var(--ink);color:#fff;border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:10px;font-weight:700;font-size:14.5px}
+.toast a{margin-left:auto;color:#A9E4C8;text-decoration:none;font-weight:800}
+/* tablet / desktop */
+.wide{display:grid}
+.rail{background:var(--surface);border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:center;padding:18px 0;gap:6px}
+.rail .logo,.side .logo{width:44px;height:44px;border-radius:12px;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;margin-bottom:14px}
+.rail div.it{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;font-weight:700;color:var(--muted);width:84px;padding:6px 0}
+.rail div.it.on{color:var(--primary)}.rail div.it.on svg{background:var(--primary-soft);border-radius:12px;width:56px;height:32px;padding:5px 16px;box-sizing:border-box}
+.rail div.it svg{height:32px;padding:5px 0}
+.side{background:var(--surface);border-right:1px solid var(--line);padding:22px 16px;display:flex;flex-direction:column;gap:4px}
+.side .brand{display:flex;align-items:center;gap:12px;margin-bottom:22px}.side .brand .logo{margin:0}.side .brand b{font-size:20px;font-weight:800}.side .brand span{display:block;font-size:13px;color:var(--muted);font-weight:600}
+.side .it{display:flex;align-items:center;gap:12px;height:44px;padding:0 12px;border-radius:12px;font-weight:700;font-size:15px;color:var(--ink2)}
+.side .it.on{background:var(--primary-soft);color:var(--primary)}
+.side .it .n{margin-left:auto;background:var(--low-bg);color:var(--low);font-size:12px;font-weight:800;border-radius:999px;padding:2px 8px}
+.side .cta{margin-top:auto}
+.top{display:flex;align-items:center;gap:14px;padding:18px 28px}
+.top h1{font-size:26px;font-weight:800;letter-spacing:-.02em;flex:1}
+.top .search{margin:0;width:340px}
+table.t{width:100%;border-collapse:collapse;font-size:14.5px}
+table.t th{text-align:left;font-size:13px;color:var(--muted);font-weight:700;padding:10px 14px;border-bottom:1px solid var(--line)}
+table.t td{padding:10px 14px;border-bottom:1px solid var(--line);font-weight:600;vertical-align:middle}
+table.t tr:last-child td{border-bottom:none}
+table.t td.num,table.t th.num{text-align:right}
+table.t tr.sel td{background:var(--primary-soft)}
+table.t tr.dis td{color:#8A948F}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-l);overflow:hidden}
+.panel .ph{display:flex;align-items:center;justify-content:space-between;padding:16px 18px 10px}
+.panel .ph h2{font-size:17px;font-weight:800}
+.panel .ph a{font-size:14px;font-weight:700;color:var(--primary);text-decoration:none}
+.prod{display:flex;align-items:center;gap:10px}.prod .thumb{width:36px;height:36px;font-size:13px;border-radius:8px}
+.bars{display:flex;align-items:flex-end;gap:14px;height:150px;padding:6px 18px 0}
+.bars div{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end;font-size:12px;color:var(--muted);font-weight:700}
+.bars i{display:block;width:100%;background:#B9D3C7;border-radius:6px 6px 2px 2px}
+.bars div.today i{background:var(--primary)}.bars div.today{color:var(--ink)}
+body{width:1024px;}</style></head><body><div class="frame wide" style="width:1024px;height:768px;grid-template-columns:96px 1fr"><div class="rail"><div class="logo">К</div><div class="it on"><svg class="i"class="lucide lucide-house"xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"fill="none"stroke="currentColor"stroke-width="2"stroke-linecap="round"stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" /><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></svg>Головна</div><div class="it "><svg class="i"class="lucide lucide-package"xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"fill="none"stroke="currentColor"stroke-width="2"stroke-linecap="round"stroke-linejoin="round"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z" /><path d="M12 22V12" /><polyline points="3.29 7 12 12 20.71 7" /><path d="m7.5 4.27 9 5.15" /></svg>Товари</div><div class="it "><svg class="i"class="lucide lucide-receipt"xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"fill="none"stroke="currentColor"stroke-width="2"stroke-linecap="round"stroke-linejoin="round"><path d="M12 17V7" /><path d="M16 8h-6a2 2 0 0 0 0 4h4a2 2 0 0 1 0 4H8" /><path d="M4 3a1 1 0 0 1 1-1 1.3 1.3 0 0 1 .7.2l.933.6a1.3 1.3 0 0 0 1.4 0l.934-.6a1.3 1.3 0 0 1 1.4 0l.933.6a1.3 1.3 0 0 0 1.4 0l.933-.6a1.3 1.3 0 0 1 1.4 0l.934.6a1.3 1.3 0 0 0 1.4 0l.933-.6A1.3 1.3 0 0 1 19 2a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1 1.3 1.3 0 0 1-.7-.2l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.934.6a1.3 1.3 0 0 1-1.4 0l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-1.4 0l-.934-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-.7.2 1 1 0 0 1-1-1z" /></svg>Замовлення</div><div class="it "><svg class="i"class="lucide lucide-truck"xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"fill="none"stroke="currentColor"stroke-width="2"stroke-linecap="round"stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" /><path d="M15 18H9" /><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14" /><circle cx="17" cy="18" r="2" /><circle cx="7" cy="18" r="2" /></svg>Поставки</div><div class="it "><svg class="i"class="lucide lucide-ellipsis"xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"fill="none"stroke="currentColor"stroke-width="2"stroke-linecap="round"stroke-linejoin="round"><circle cx="12" cy="12" r="1" /><circle cx="19" cy="12" r="1" /><circle cx="5" cy="12" r="1" /></svg>Ще</div></div>
+  <div style="overflow:hidden"><div class="top" style="padding:20px 24px 14px"><div style="flex:1"><div class="sub" style="font-size:14px;color:var(--muted);font-weight:600">П’ятниця, 16 жовтня · «Липка»</div><h1>Добрий день, Оксано</h1></div><div class="search" style="width:300px;margin:0"><svg class="i"class="lucide lucide-search"xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"fill="none"stroke="currentColor"stroke-width="2"stroke-linecap="round"stroke-linejoin="round"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>Знайти товар або замовлення</div><div class="btn primary"><svg class="i"class="lucide lucide-plus"xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"fill="none"stroke="currentColor"stroke-width="2"stroke-linecap="round"stroke-linejoin="round"><path d="M5 12h14" /><path d="M12 5v14" /></svg>Замовлення</div></div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:0 24px 16px">
+   <div class="tile"><b>6</b><span>замовлень сьогодні</span></div><div class="tile"><b>3 180 ₴</b><span>продано сьогодні</span></div><div class="tile"><b>2</b><span>чекають відправки</span></div><div class="tile warn"><b>3</b><span>товари закінчуються</span></div></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:0 24px">
+   <div class="panel"><div class="ph"><h2>Закінчується</h2><a>Усі</a></div><div class="list" style="margin:0;border:none;border-radius:0"><div class="row"><div class="thumb t1">ПЗ</div><div class="tx"><b>Піжама «Зайчик»</b><span>Розмір 104 · мінімум 3</span></div><div class="end"><span class="badge out">немає</span></div></div><div class="row"><div class="thumb t2">ПВ</div><div class="tx"><b>Піжама «Ведмедик»</b><span>Розмір 98 · мінімум 3</span></div><div class="end"><span class="badge low">2 шт · мало</span></div></div><div class="row"><div class="thumb t3">КЛ</div><div class="tx"><b>Комбінезон флісовий «Лис»</b><span>Розмір 86 · мінімум 2</span></div><div class="end"><span class="badge low">1 шт · мало</span></div></div></div><div style="padding:12px 16px 16px"><div class="btn secondary sm"><svg class="i"class="lucide lucide-truck"xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"fill="none"stroke="currentColor"stroke-width="2"stroke-linecap="round"stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" /><path d="M15 18H9" /><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14" /><circle cx="17" cy="18" r="2" /><circle cx="7" cy="18" r="2" /></svg>Скласти дозамовлення</div></div></div>
+   <div class="panel"><div class="ph"><h2>Останні замовлення</h2><a>Усі</a></div><div class="list" style="margin:0;border:none;border-radius:0"><div class="row"><div class="tx"><b>№1046 · 900 ₴</b><span>Instagram · Ірина К. · 14:20</span></div><div class="end"><span class="st new">Нове</span></div></div><div class="row"><div class="tx"><b>№1045 · 1 140 ₴</b><span>Prom · 2 товари · 12:05</span></div><div class="end"><span class="st sent">Відправлено</span></div></div><div class="row"><div class="tx"><b>№1044 · 260 ₴</b><span>Офлайн · ярмарок · 10:31</span></div><div class="end"><span class="st done">Виконано</span></div></div></div></div>
+   <div class="panel" style="grid-column:1/3"><div class="ph"><h2>Продажі за тиждень</h2><span style="font-size:14px;color:var(--muted);font-weight:700">24 080 ₴ · 41 замовлення</span></div>
+    <div class="bars" style="height:150px"><div class=""><span style="color:var(--ink)">2,2к</span><i style="height:49px"></i>Пт</div><div class=""><span style="color:var(--ink)">4,1к</span><i style="height:91px"></i>Сб</div><div class=""><span style="color:var(--ink)">3,6к</span><i style="height:80px"></i>Нд</div><div class=""><span style="color:var(--ink)">1,5к</span><i style="height:33px"></i>Пн</div><div class=""><span style="color:var(--ink)">2,7к</span><i style="height:60px"></i>Вт</div><div class=""><span style="color:var(--ink)">3,9к</span><i style="height:87px"></i>Ср</div><div class=""><span style="color:var(--ink)">2,9к</span><i style="height:64px"></i>Чт</div><div class="today"><span style="color:var(--ink)">3,2к</span><i style="height:71px"></i>Сьогодні</div></div><div style="height:14px"></div></div>
+  </div></div></div></body></html>
