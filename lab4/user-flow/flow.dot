@@ -1,0 +1,46 @@
+digraph G {
+ graph [rankdir=TB, fontname="Liberation Sans", nodesep=0.45, ranksep=0.42, pad=0.3, bgcolor="white", splines=ortho];
+ node [fontname="Liberation Sans", fontsize=13, style="filled", penwidth=1.6, color="#1F5F4A", margin="0.18,0.08"];
+ edge [fontname="Liberation Sans", fontsize=12, color="#3F4B46", penwidth=1.4, arrowsize=0.8];
+ start [shape=oval, fillcolor="#1F5F4A", fontcolor="white", label="Початок: клієнтка пише в Direct\n«Чи є піжама “Зайчик” на 98?»"];
+ home [shape=box, fillcolor="#E2EEE8", label="Екран «Головна»\n(відкрити застосунок)"];
+ fab [shape=box, fillcolor="white", label="Дія: натиснути «+ Замовлення»"];
+ sel [shape=box, fillcolor="#E2EEE8", label="Екран «Нове замовлення» · крок 1\nввести в пошук «зайчик»"];
+ found [shape=diamond, fillcolor="#FCEFD3", color="#B7791F", label="Товар\nзнайдено?"];
+ addnew [shape=box, fillcolor="white", label="Дія: додати новий товар\n(лише назва і кількість)"];
+ instock [shape=diamond, fillcolor="#FCEFD3", color="#B7791F", label="Є в\nнаявності?"];
+ noitem [shape=box, fillcolor="white", label="Мітка «немає», додавання заблоковано;\nзапропонувати клієнтці інший розмір"];
+ qty [shape=box, fillcolor="white", label="Дія: вказати кількість «− 2 +»\n(не більше залишку)"];
+ more [shape=diamond, fillcolor="#FCEFD3", color="#B7791F", label="Додати ще\nтовар?"];
+ next [shape=box, fillcolor="white", label="Дія: «Далі»"];
+ co [shape=box, fillcolor="#E2EEE8", label="Екран «Оформлення» · крок 2\nканал Instagram, клієнт — необов’язково"];
+ create [shape=box, fillcolor="white", label="Дія: «Створити замовлення»"];
+ net [shape=diamond, fillcolor="#FCEFD3", color="#B7791F", label="Є\nз’єднання?"];
+ err [shape=box, fillcolor="#FCE6E4", color="#A8201A", label="Стан помилки: замовлення не створено,\nзалишки не змінено · «Спробувати ще раз»"];
+ res [shape=box, fillcolor="white", label="Система: резерв для всіх каналів,\nзалишок 7 → 5"];
+ min [shape=diamond, fillcolor="#FCEFD3", color="#B7791F", label="Залишок\n≤ мінімуму?"];
+ warn [shape=box, fillcolor="white", label="Попередження «Лишилося 5 шт»;\nдодати в список дозамовлення"];
+ done [shape=oval, fillcolor="#1F5F4A", fontcolor="white", label="Результат: екран «Замовлення №1047 створено»;\n«Скопіювати для клієнта» → відповідь у Direct"];
+ start -> home -> fab -> sel -> found;
+ found -> instock [xlabel="так "];
+ found -> addnew [xlabel="ні "];
+ addnew -> sel [constraint=false];
+ instock -> qty [xlabel="так "];
+ instock -> noitem [xlabel="ні "];
+ noitem -> sel [constraint=false];
+ qty -> more;
+ more -> sel [xlabel="так ", constraint=false];
+ more -> next [xlabel="ні "];
+ next -> co -> create -> net;
+ net -> err [xlabel="ні "];
+ err -> create [constraint=false];
+ net -> res [xlabel="так "];
+ res -> min;
+ min -> warn [xlabel="так "];
+ min -> done [xlabel="ні "];
+ warn -> done;
+ {rank=same; found; addnew}
+ {rank=same; instock; noitem}
+ {rank=same; net; err}
+ {rank=same; min; warn}
+}
