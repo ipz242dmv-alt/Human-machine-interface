@@ -180,3 +180,22 @@ input:focus, select:focus
 {
 	border:2px solid red !important;
 }
+/* ===== Accessibility fixes (lab 7) ===== */
+/* Product titles became <h3>: keep the original visual size */
+.product-title { font-size: 1rem; line-height: 1.5; margin-bottom: 0; }
+del.text-gray-350 { text-decoration: line-through; }
+/* Skip link: visible and high-contrast when focused */
+#skiplink a:focus { display: inline-block; padding: .5rem 1rem; background: #111; color: #fff; z-index: 1000; }
+main:focus { outline: none; }
+/* Colour contrast (WCAG 2.1 AA, 1.4.3: at least 4.5:1 for normal text) */
+.text-gray-400 { color: #6c6c6c !important; }        /* was #909090, 3.19:1 -> 5.25:1 */
+.text-gray-350 { color: #707070 !important; }        /* was #a6a6a6, 2.43:1 -> 4.95:1 */
+.text-primary, .nav .nav-link.active, .border p a { color: #b83227 !important; }   /* was #ff6f61, 2.72:1 -> 5.96:1 */
+.btn-primary, .card-circle { background-color: #b83227 !important; border-color: #b83227 !important; color: #fff !important; }
+.btn-primary:hover, .btn-primary:focus { background-color: #8f261e !important; border-color: #8f261e !important; }
+/* Clearly visible keyboard focus */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid #1a73e8; outline-offset: 2px; }
+/* Form: required marker and shipping group */
+.required-mark { color: #b83227; font-weight: 700; }
+fieldset.shipping { border: 0; padding: 0; margin: 0 0 1rem; min-width: 0; }
+fieldset.shipping legend { font-size: 1rem; font-weight: 600; margin-bottom: .5rem; }
