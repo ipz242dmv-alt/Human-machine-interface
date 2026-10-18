@@ -1,0 +1,56 @@
+<!doctype html><html lang="uk"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Manrope;background:#fff;color:#1c1b19;width:1100px;padding:28px}
+.card{border:2px solid #1f5f4a;border-radius:18px;overflow:hidden;display:grid;grid-template-columns:330px 1fr}
+.side{background:#1f5f4a;color:#fff;padding:28px}
+.av{width:120px;height:120px;border-radius:50%;background:#e8a33d;color:#1c1b19;display:flex;align-items:center;justify-content:center;font-size:44px;font-weight:800;margin-bottom:18px}
+.side h1{font-size:30px;font-weight:800;line-height:1.15}
+.side .role{font-size:16px;opacity:.9;margin:8px 0 20px}
+.facts div{display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.25);padding:8px 0;font-size:15px;gap:12px}
+.facts b{font-weight:700;text-align:right}
+.quote{margin-top:22px;font-size:17px;font-style:italic;line-height:1.4;border-left:4px solid #e8a33d;padding-left:12px}
+.main{padding:26px 28px;display:grid;grid-template-columns:1fr 1fr;gap:18px 24px}
+.blk h2{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#1f5f4a;margin-bottom:8px;font-weight:800}
+.blk ul{list-style:none}
+.blk li{font-size:15.5px;line-height:1.4;padding:4px 0 4px 18px;position:relative}
+.blk li:before{content:"";position:absolute;left:2px;top:12px;width:8px;height:8px;border-radius:2px;background:#1f5f4a}
+.pain li:before{background:#c2410c}
+.wide{grid-column:1/3}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tools span{background:#f1efe8;border-radius:999px;padding:6px 12px;font-size:14px;font-weight:600}
+.bar{display:grid;grid-template-columns:200px 1fr;align-items:center;font-size:14.5px;margin:5px 0;gap:10px}
+.bar i{display:block;height:10px;border-radius:5px;background:#e6e2d8;position:relative}
+.bar i:after{content:"";position:absolute;inset:0;width:var(--v);background:#1f5f4a;border-radius:5px}
+</style></head><body>
+<div id="root"></div>
+<script>
+const P={
+oksana:{ini:'ОМ',name:'Оксана Мельник',role:'Власниця Instagram-магазину дитячого одягу «Липка»',
+facts:[['Вік','34 роки'],['Місто','Житомир'],['Бізнес','ФОП, 1 помічниця'],['Канали','Instagram, Prom.ua, ярмарки'],['Асортимент','≈ 180 позицій з розмірами']],
+quote:'«Найгірше — коли пишу клієнтці “є”, а потім знаходжу, що останню піжаму вже продали на Prom».',
+goals:['Відповідати клієнтам у Direct одразу й точно','Не продавати товар, якого вже немає','Витрачати вечори на сім’ю, а не на звіряння таблиці','Вчасно дозамовляти популярні розміри'],
+pains:['Залишки в Google Sheets відстають від реальних продажів на 2 каналах','Таблицю незручно редагувати з телефона на ходу','1–1,5 год щовечора на ручне звіряння','Про закінчення ходового розміру дізнається від клієнта'],
+behav:['Увесь день із телефоном: Direct, Prom, Нова пошта','Таблицю відкриває на ноутбуці ввечері','Записує продажі в нотатки, потім переносить'],
+expect:['Залишок видно за 2–3 секунди','Українська мова, зрозуміло без навчання','Безкоштовний старт, недорогий тариф'],
+tools:['Google Sheets','Нотатки','Instagram Direct','Кабінет Prom','Нова пошта'],
+skills:[['Цифрова грамотність',75],['Терпимість до налаштувань',30],['Час на облік',25]]},
+andrii:{ini:'АК',name:'Андрій Коваль',role:'Комірник-продавець у магазині господарських товарів «Майстер»',
+facts:[['Вік','27 років'],['Місто','смт Черняхів'],['Бізнес','сімейний, 3 працівники'],['Канали','офлайн-магазин, замовлення телефоном'],['Асортимент','≈ 900 позицій, штрихкоди']],
+quote:'«Пів дня переписую накладну в Excel, а потім ще шукаю, де помилився на одну коробку».',
+goals:['Швидко й без помилок приймати поставки','Одразу відповідати власнику, скільки чого лишилося','Скоротити інвентаризацію з дня до кількох годин','Знати, що треба дозамовити до кінця тижня'],
+pains:['Паперові накладні → ручне введення → помилки','Облік в Excel власника на одному ПК у підсобці','Немає пошуку товару за штрихкодом','Інвентаризація раз на квартал забирає цілий день'],
+behav:['Працює на ногах між полицями й касою','Має смартфон Android середнього класу','Не любить «складні програми з купою кнопок»'],
+expect:['Сканувати штрихкод камерою телефона','Великі кнопки, робота однією рукою','Видно, хто і коли змінив залишок'],
+tools:['Excel','Паперові накладні','Калькулятор','Viber'],
+skills:[['Цифрова грамотність',60],['Терпимість до налаштувань',40],['Час на облік',55]]}};
+const p=P[location.hash.slice(1)||'oksana'];
+const li=a=>a.map(x=>`<li>${x}</li>`).join('');
+document.getElementById('root').innerHTML=`<div class="card"><div class="side"><div class="av">${p.ini}</div><h1>${p.name}</h1><div class="role">${p.role}</div>
+<div class="facts">${p.facts.map(f=>`<div><span>${f[0]}</span><b>${f[1]}</b></div>`).join('')}</div><div class="quote">${p.quote}</div></div>
+<div class="main"><div class="blk"><h2>Цілі</h2><ul>${li(p.goals)}</ul></div><div class="blk pain"><h2>Больові точки</h2><ul>${li(p.pains)}</ul></div>
+<div class="blk"><h2>Поведінка</h2><ul>${li(p.behav)}</ul></div><div class="blk"><h2>Очікування</h2><ul>${li(p.expect)}</ul></div>
+<div class="blk"><h2>Інструменти зараз</h2><div class="tools">${p.tools.map(t=>`<span>${t}</span>`).join('')}</div></div>
+<div class="blk"><h2>Профіль</h2>${p.skills.map(s=>`<div class="bar"><span>${s[0]}</span><i style="--v:${s[1]}%"></i></div>`).join('')}</div></div></div>`;
+</script></body></html>

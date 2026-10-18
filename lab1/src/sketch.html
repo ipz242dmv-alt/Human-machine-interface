@@ -1,0 +1,68 @@
+<!doctype html><html lang="uk"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="rough.js"></script>
+<style>body{margin:0;background:#fbfaf6;font-family:Caveat}</style></head><body>
+<svg id="s" width="1500" height="830" xmlns="http://www.w3.org/2000/svg"></svg>
+<script>
+const svg=document.getElementById('s'); const rc=rough.svg(svg);
+const O={roughness:1.4,stroke:'#2b2b2b',strokeWidth:1.6};
+const add=n=>svg.appendChild(n);
+const rect=(x,y,w,h,o={})=>add(rc.rectangle(x,y,w,h,{...O,...o}));
+const line=(x1,y1,x2,y2,o={})=>add(rc.line(x1,y1,x2,y2,{...O,...o}));
+const circ=(x,y,d,o={})=>add(rc.circle(x,y,d,{...O,...o}));
+const txt=(x,y,t,s=22,c='#2b2b2b',w=400,anchor='start')=>{const e=document.createElementNS('http://www.w3.org/2000/svg','text');e.setAttribute('x',x);e.setAttribute('y',y);e.setAttribute('font-size',s);e.setAttribute('fill',c);e.setAttribute('font-weight',w);e.setAttribute('text-anchor',anchor);e.setAttribute('font-family','Caveat');e.textContent=t;add(e);};
+const arrow=(x1,y1,x2,y2,c='#c2410c')=>{line(x1,y1,x2,y2,{stroke:c,strokeWidth:2});const a=Math.atan2(y2-y1,x2-x1);line(x2,y2,x2-14*Math.cos(a-0.45),y2-14*Math.sin(a-0.45),{stroke:c,strokeWidth:2});line(x2,y2,x2-14*Math.cos(a+0.45),y2-14*Math.sin(a+0.45),{stroke:c,strokeWidth:2});};
+const phone=(x,y)=>{rect(x,y,260,520,{strokeWidth:2.4});line(x+100,y+16,x+160,y+16);};
+const hatch={fill:'#d9d4c7',fillStyle:'hachure',hachureGap:6};
+const red='#c2410c', grn='#1f5f4a';
+
+// ---- Variant A
+let X=40,Y=100;
+txt(X,40,'Варіант А',34,grn,700);txt(X,72,'Кнопка «+ Замовлення» → пошук',26,grn,600);
+phone(X,Y);
+txt(X+18,Y+60,'Нове замовлення',26,'#2b2b2b',700);
+rect(X+16,Y+76,228,38);txt(X+28,Y+102,'🔍 піжама зай|',22);
+for(let i=0;i<3;i++){const yy=Y+130+i*70;rect(X+16,yy,228,60);rect(X+24,yy+8,44,44,hatch);txt(X+78,yy+28,['Піжама «Зайчик» 98','Піжама «Зайчик» 104','Піжама «Ведмедик» 98'][i],19);
+ txt(X+78,yy+50,['є 3 шт','є 7 шт','немає'][i],18,i==2?red:grn,700);
+ if(i<2){rect(X+188,yy+30,48,22);txt(X+197,yy+47,'− 1 +',17);} }
+rect(X+16,Y+450,228,48,{fill:'#1f5f4a',fillStyle:'solid'});txt(X+130,Y+481,'Далі · 1 товар',22,'#fff',700,'middle');
+arrow(X+330,Y+95,X+252,Y+95);txt(X+268,Y+80,'шукаю одразу',20,red);
+txt(X+10,Y+560,'+ знайомий патерн (кошик), видно залишок',22);
+txt(X+10,Y+588,'− треба знайти товар серед багатьох',22);
+txt(X+10,Y+616,'?  чи вистачить 3 дій',22);
+
+// ---- Variant B
+X=540;
+txt(X,40,'Варіант Б',34,grn,700);txt(X,72,'«Продати» прямо з картки товару',26,grn,600);
+phone(X,Y);
+rect(X+16,Y+40,228,150,hatch);
+txt(X+18,Y+220,'Піжама «Зайчик»',26,'#2b2b2b',700);
+txt(X+18,Y+246,'розмір: [92] [98] [104]',21);
+circ(X+120,Y+240,46,{stroke:red});
+rect(X+16,Y+266,228,70);txt(X+30,Y+296,'На складі: 3',26,grn,700);txt(X+30,Y+324,'мін. залишок 2 · Instagram/Prom',18);
+rect(X+16,Y+352,108,48);txt(X+70,Y+383,'Прийняти',21,'#2b2b2b',600,'middle');
+rect(X+136,Y+352,108,48,{fill:'#1f5f4a',fillStyle:'solid'});txt(X+190,Y+383,'Продати 1',21,'#fff',700,'middle');
+rect(X+16,Y+420,228,60,{strokeLineDash:[6,6]});txt(X+30,Y+446,'Історія: −1 Prom 10:12',19);txt(X+30,Y+468,'+10 поставка 09.10',19);
+arrow(X+300,Y+390,X+250,Y+380);txt(X+300,Y+410,'1 дотик!',24,red,700);
+txt(X+10,Y+560,'+ найшвидше для 1 товару',22);
+txt(X+10,Y+588,'− незручно, коли в замовленні 3–4 товари',22);
+txt(X+10,Y+616,'− легко натиснути випадково → потрібне «Скасувати»',22);
+
+// ---- Variant C
+X=1040;
+txt(X,40,'Варіант В',34,grn,700);txt(X,72,'Вставити повідомлення клієнта',26,grn,600);
+phone(X,Y);
+txt(X+18,Y+60,'З повідомлення',26,'#2b2b2b',700);
+rect(X+16,Y+76,228,96,{strokeLineDash:[5,5]});txt(X+28,Y+104,'«Добрий день! Піжаму',20);txt(X+28,Y+128,'зайчик на 98 і шкарпетки',20);txt(X+28,Y+152,'2 пари 23-25 💛»',20);
+txt(X+18,Y+204,'Знайдено:',22,'#2b2b2b',700);
+rect(X+16,Y+214,228,54);txt(X+28,Y+240,'✓ Піжама «Зайчик» 98 × 1',19);txt(X+28,Y+260,'є 3',17,grn,700);
+rect(X+16,Y+276,228,54);txt(X+28,Y+302,'? Шкарпетки 23-25 × 2',19);txt(X+28,Y+322,'уточнити колір',17,red,700);
+rect(X+16,Y+340,228,40);txt(X+130,Y+366,'+ додати вручну',20,'#2b2b2b',400,'middle');
+rect(X+16,Y+450,228,48,{fill:'#1f5f4a',fillStyle:'solid'});txt(X+130,Y+481,'Створити замовлення',22,'#fff',700,'middle');
+arrow(X+275,Y+120,X+250,Y+120);txt(X+150,Y+-6,'копіюю з Direct',22,red);
+txt(X+10,Y+560,'+ «магія» для Instagram-продавців',22);
+txt(X+10,Y+588,'− помилки розпізнавання, складно зробити',22);
+txt(X+10,Y+616,'→ можна як доповнення до варіанту А',22);
+
+txt(750,800,'Проблема: як швидко оформити замовлення з телефона і не продати те, чого немає? (HMW 1)',28,'#2b2b2b',700,'middle');
+</script></body></html>
