@@ -1,0 +1,154 @@
+<!doctype html><html lang="uk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=1400"><title>Комора · компоненти</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+ --bg:#EEF1EC;--surface:#FFFFFF;--ink:#17211D;--ink2:#3F4B46;--muted:#5F6B66;--line:#D9E0DB;
+ --primary:#1F5F4A;--primary-press:#174A39;--primary-soft:#E2EEE8;--on-primary:#FFFFFF;
+ --ok:#256B43;--ok-bg:#E3F1E8;--low:#7A4F00;--low-bg:#FCEFD3;--low-line:#E9B64B;--out:#A8201A;--out-bg:#FCE6E4;
+ --r-s:10px;--r-m:14px;--r-l:20px;--sp:4px;
+ --font:'Manrope',system-ui,sans-serif;
+}
+body{font-family:var(--font);color:var(--ink);background:#C9D1CC;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+svg.i{width:22px;height:22px;stroke-width:2;flex:none}
+.frame{position:relative;overflow:hidden;background:var(--bg)}
+.phone{width:390px;height:844px}
+.status{height:47px;display:flex;align-items:center;justify-content:space-between;padding:0 30px 0 34px;font-weight:700;font-size:15px}
+.status .r{display:flex;gap:6px;align-items:center}.status .r i{display:block;width:17px;height:11px;border-radius:2px;background:var(--ink)}
+.status .r b{display:block;width:24px;height:12px;border:1.5px solid var(--ink);border-radius:4px;position:relative}.status .r b:after{content:"";position:absolute;inset:1.5px 5px 1.5px 1.5px;background:var(--ink);border-radius:1.5px}
+.homeind{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:134px;height:5px;border-radius:3px;background:var(--ink)}
+.appbar{display:flex;align-items:center;gap:8px;padding:6px 16px 10px;min-height:52px}
+.appbar h1{font-size:20px;font-weight:800;letter-spacing:-.01em;flex:1}
+.appbar .sub{font-size:13px;color:var(--muted);font-weight:600}
+.iconbtn{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--ink);position:relative;background:transparent}
+.iconbtn .dot{position:absolute;top:9px;right:9px;min-width:16px;height:16px;border-radius:8px;background:var(--out);color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;padding:0 4px;border:2px solid var(--bg)}
+.greet{padding:4px 16px 12px}.greet small{display:block;font-size:14px;color:var(--muted);font-weight:600;margin-bottom:2px}.greet h1{font-size:28px;font-weight:800;letter-spacing:-.02em;line-height:1.15}
+.search{margin:0 16px 14px;height:48px;border-radius:var(--r-m);background:var(--surface);border:1.5px solid var(--line);display:flex;align-items:center;gap:10px;padding:0 14px;color:var(--muted);font-size:15.5px;font-weight:500}
+.search.focus{border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-soft);color:var(--ink)}
+.search .caret{display:inline-block;width:2px;height:20px;background:var(--primary);margin-left:-8px}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 16px 18px}
+.tile{background:var(--surface);border-radius:var(--r-m);padding:12px 12px 11px;border:1px solid var(--line)}
+.tile b{white-space:nowrap;display:block;font-size:24px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.tile span{font-size:12.5px;color:var(--muted);font-weight:600;line-height:1.25;display:block;margin-top:4px}
+.tile.warn{background:var(--low-bg);border-color:var(--low-line)}.tile.warn b,.tile.warn span{color:var(--low)}
+.sec{display:flex;align-items:baseline;justify-content:space-between;padding:0 16px 8px}
+.sec h2{font-size:17px;font-weight:800}.sec a{font-size:14px;font-weight:700;color:var(--primary);text-decoration:none}
+.list{margin:0 16px 18px;background:var(--surface);border-radius:var(--r-m);border:1px solid var(--line);overflow:hidden}
+.row{display:flex;align-items:center;gap:12px;padding:11px 12px;min-height:64px;border-top:1px solid var(--line)}
+.row:first-child{border-top:none}
+.thumb{width:44px;height:44px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;color:#3F4B46}
+.t1{background:#F3E1E6}.t2{background:#DDE8F5}.t3{background:#F5E9D4}.t4{background:#E3EDDC}
+.row .tx{flex:1;min-width:0}
+.row .tx b{display:block;font-size:15px;font-weight:700;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .tx span{display:block;font-size:13px;color:var(--muted);font-weight:500;margin-top:1px}
+.row .end{text-align:right;flex:none}
+.row .end b{display:block;font-size:15px;font-weight:800}
+.row.disabled .tx b,.row.disabled .thumb{opacity:.55}
+.row.sel{background:var(--primary-soft)}
+.badge{display:inline-flex;align-items:center;gap:5px;height:26px;padding:0 10px;border-radius:999px;font-size:13px;font-weight:800;white-space:nowrap}
+.badge:before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.badge.ok{background:var(--ok-bg);color:var(--ok)}.badge.low{background:var(--low-bg);color:var(--low)}.badge.out{background:var(--out-bg);color:var(--out)}
+.badge.neutral{background:#E9EDEA;color:var(--ink2)}.badge.neutral:before{display:none}
+.st{font-size:12.5px;font-weight:700;border-radius:6px;padding:3px 7px}
+.st.new{background:var(--primary-soft);color:var(--primary)}.st.sent{background:#E6ECF6;color:#2D4A7A}.st.done{background:#ECEEEC;color:var(--ink2)}
+.fab{position:absolute;right:16px;bottom:96px;height:56px;border-radius:18px;background:var(--primary);color:var(--on-primary);display:flex;align-items:center;gap:8px;padding:0 20px 0 16px;font-weight:800;font-size:16px;box-shadow:0 6px 16px rgba(23,74,57,.35)}
+.fab svg{width:24px;height:24px}
+.nav{position:absolute;left:0;right:0;bottom:0;height:86px;background:var(--surface);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);padding-top:8px}
+.nav div{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:12px;font-weight:700;color:var(--muted)}
+.nav div.on{color:var(--primary)}.nav div.on svg{background:var(--primary-soft);border-radius:12px;width:52px;padding:3px 13px;height:28px;box-sizing:border-box}
+.nav svg{height:28px;width:24px;padding:3px 0}
+.btn{height:52px;border-radius:var(--r-m);display:flex;align-items:center;justify-content:center;gap:8px;font-weight:800;font-size:16px;border:none;font-family:var(--font);padding:0 20px;white-space:nowrap}
+.btn.primary{background:var(--primary);color:var(--on-primary)}
+.btn.primary.pressed{background:var(--primary-press)}
+.btn.primary.disabled{background:#C8D1CC;color:#5F6B66}
+.btn.secondary{background:var(--surface);color:var(--primary);border:1.5px solid var(--primary)}
+.btn.ghost{background:transparent;color:var(--primary)}
+.btn.danger{background:transparent;color:var(--out)}
+.btn.sm{height:40px;font-size:14px;padding:0 14px;border-radius:12px}
+.stepper{display:flex;align-items:center;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);height:40px}
+.stepper span{width:36px;height:100%;display:flex;align-items:center;justify-content:center;color:var(--primary)}
+.stepper span svg{width:18px;height:18px}
+.stepper b{min-width:26px;text-align:center;font-size:16px;font-weight:800}
+.stepper.on{border-color:var(--primary);background:var(--surface)}
+.addbtn{width:40px;height:40px;border-radius:12px;background:var(--primary-soft);color:var(--primary);display:flex;align-items:center;justify-content:center}
+.bottombar{position:absolute;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);padding:12px 16px 34px;display:flex;align-items:center;gap:12px}
+.bottombar .sum{flex:1}.bottombar .sum b{display:block;font-size:20px;font-weight:800}.bottombar .sum span{font-size:13px;color:var(--muted);font-weight:600}
+.steps{display:flex;gap:6px;padding:0 16px 14px}.steps i{height:4px;flex:1;border-radius:2px;background:var(--line)}.steps i.on{background:var(--primary)}
+.group{padding:0 16px 16px}
+.label{font-size:14px;font-weight:700;color:var(--ink2);margin-bottom:8px;display:flex;justify-content:space-between}
+.label em{font-style:normal;font-weight:600;color:var(--muted)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{height:40px;padding:0 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);display:flex;align-items:center;gap:6px;font-weight:700;font-size:14.5px;color:var(--ink2)}
+.chip.on{background:var(--primary);border-color:var(--primary);color:#fff}
+.chip.on svg{width:16px;height:16px}
+.input{height:50px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);padding:0 14px;display:flex;align-items:center;gap:10px;font-size:15.5px;font-weight:500;margin-bottom:8px}
+.input .ph{color:var(--muted)}
+.input.err{border-color:var(--out);background:#FFF9F8}
+.input.focus{border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-soft)}
+.input.dis{background:#F1F3F1;color:#8A948F}
+.hint{font-size:13px;font-weight:600;color:var(--out);margin:-2px 0 8px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:14px}
+.line{display:flex;justify-content:space-between;align-items:center;font-size:15px;padding:6px 0;gap:10px}
+.line b{font-weight:800}
+.notice{display:flex;gap:10px;align-items:flex-start;border-radius:12px;padding:12px;font-size:14px;font-weight:600;line-height:1.4}
+.notice.info{background:var(--primary-soft);color:var(--primary-press)}
+.notice.warn{background:var(--low-bg);color:var(--low)}
+.notice.err{background:var(--out-bg);color:var(--out)}
+.notice svg{width:20px;height:20px;margin-top:1px}
+.delta{display:flex;align-items:center;gap:8px;font-weight:800;font-size:15px}
+.delta s{color:var(--muted);text-decoration:none;font-weight:700}
+.sk{background:linear-gradient(90deg,#E3E8E4,#F1F4F1,#E3E8E4);border-radius:8px}
+.empty{text-align:center;padding:24px 28px}
+.empty .pic{width:120px;height:120px;border-radius:32px;background:var(--primary-soft);margin:0 auto 18px;display:flex;align-items:center;justify-content:center;color:var(--primary)}
+.empty .pic svg{width:56px;height:56px;stroke-width:1.6}
+.empty h2{font-size:22px;font-weight:800;margin-bottom:8px}
+.empty p{font-size:15px;color:var(--muted);line-height:1.5;font-weight:500;margin-bottom:20px}
+.toast{position:absolute;left:16px;right:16px;bottom:110px;background:var(--ink);color:#fff;border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:10px;font-weight:700;font-size:14.5px}
+.toast a{margin-left:auto;color:#A9E4C8;text-decoration:none;font-weight:800}
+/* tablet / desktop */
+.wide{display:grid}
+.rail{background:var(--surface);border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:center;padding:18px 0;gap:6px}
+.rail .logo,.side .logo{width:44px;height:44px;border-radius:12px;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;margin-bottom:14px}
+.rail div.it{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;font-weight:700;color:var(--muted);width:84px;padding:6px 0}
+.rail div.it.on{color:var(--primary)}.rail div.it.on svg{background:var(--primary-soft);border-radius:12px;width:56px;height:32px;padding:5px 16px;box-sizing:border-box}
+.rail div.it svg{height:32px;padding:5px 0}
+.side{background:var(--surface);border-right:1px solid var(--line);padding:22px 16px;display:flex;flex-direction:column;gap:4px}
+.side .brand{display:flex;align-items:center;gap:12px;margin-bottom:22px}.side .brand .logo{margin:0}.side .brand b{font-size:20px;font-weight:800}.side .brand span{display:block;font-size:13px;color:var(--muted);font-weight:600}
+.side .it{display:flex;align-items:center;gap:12px;height:44px;padding:0 12px;border-radius:12px;font-weight:700;font-size:15px;color:var(--ink2)}
+.side .it.on{background:var(--primary-soft);color:var(--primary)}
+.side .it .n{margin-left:auto;background:var(--low-bg);color:var(--low);font-size:12px;font-weight:800;border-radius:999px;padding:2px 8px}
+.side .cta{margin-top:auto}
+.top{display:flex;align-items:center;gap:14px;padding:18px 28px}
+.top h1{font-size:26px;font-weight:800;letter-spacing:-.02em;flex:1}
+.top .search{margin:0;width:340px}
+table.t{width:100%;border-collapse:collapse;font-size:14.5px}
+table.t th{text-align:left;font-size:13px;color:var(--muted);font-weight:700;padding:10px 14px;border-bottom:1px solid var(--line)}
+table.t td{padding:10px 14px;border-bottom:1px solid var(--line);font-weight:600;vertical-align:middle}
+table.t tr:last-child td{border-bottom:none}
+table.t td.num,table.t th.num{text-align:right}
+table.t tr.sel td{background:var(--primary-soft)}
+table.t tr.dis td{color:#8A948F}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-l);overflow:hidden}
+.panel .ph{display:flex;align-items:center;justify-content:space-between;padding:16px 18px 10px}
+.panel .ph h2{font-size:17px;font-weight:800}
+.panel .ph a{font-size:14px;font-weight:700;color:var(--primary);text-decoration:none}
+.prod{display:flex;align-items:center;gap:10px}.prod .thumb{width:36px;height:36px;font-size:13px;border-radius:8px}
+.bars{display:flex;align-items:flex-end;gap:14px;height:150px;padding:6px 18px 0}
+.bars div{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end;font-size:12px;color:var(--muted);font-weight:700}
+.bars i{display:block;width:100%;background:#B9D3C7;border-radius:6px 6px 2px 2px}
+.bars div.today i{background:var(--primary)}.bars div.today{color:var(--ink)}
+body{width:1400px;background:#fff}</style></head><body><div style="width:1400px;background:#fff;padding:40px;font-family:Manrope">
+  <h1 style="font-size:32px;font-weight:800;margin-bottom:6px">Комора — базові компоненти</h1><p style="color:#5F6B66;font-weight:600;margin-bottom:24px">Кожен компонент — Figma Component Set з варіантами станів; усі побудовані на Auto Layout.</p>
+  <h2 style="font-size:18px;font-weight:800;margin-bottom:10px">Кнопка (Button) — type × state</h2>
+  <div style="display:flex;gap:18px;flex-wrap:wrap;margin-bottom:26px"><div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start"><span style="font-size:12px;color:#5F6B66;font-weight:700">Primary / default</span><div class="btn primary">Створити замовлення</div></div><div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start"><span style="font-size:12px;color:#5F6B66;font-weight:700">Primary / pressed</span><div class="btn primary pressed">Створити замовлення</div></div><div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start"><span style="font-size:12px;color:#5F6B66;font-weight:700">Primary / disabled</span><div class="btn primary disabled">Далі</div></div><div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start"><span style="font-size:12px;color:#5F6B66;font-weight:700">Secondary</span><div class="btn secondary"><svg class="i"class="lucide lucide-copy"xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"fill="none"stroke="currentColor"stroke-width="2"stroke-linecap="round"stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg>Імпортувати з таблиці</div></div><div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start"><span style="font-size:12px;color:#5F6B66;font-weight:700">Ghost</span><div class="btn ghost">Нове замовлення</div></div><div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start"><span style="font-size:12px;color:#5F6B66;font-weight:700">Danger</span><div class="btn danger">Скасувати замовлення</div></div><div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start"><span style="font-size:12px;color:#5F6B66;font-weight:700">FAB</span><div class="fab" style="position:static"><svg class="i"class="lucide lucide-plus"xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"fill="none"stroke="currentColor"stroke-width="2"stroke-linecap="round"stroke-linejoin="round"><path d="M5 12h14" /><path d="M12 5v14" /></svg>Замовлення</div></div></div>
+  <h2 style="font-size:18px;font-weight:800;margin-bottom:10px">Поле вводу (Input) — state</h2>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:26px"><div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start"><span style="font-size:12px;color:#5F6B66;font-weight:700">Default / empty</span><div class="input" style="width:100%"><svg class="i"class="lucide lucide-user"xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"fill="none"stroke="currentColor"stroke-width="2"stroke-linecap="round"stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg><span class="ph">Ім’я клієнта</span></div></div><div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start"><span style="font-size:12px;color:#5F6B66;font-weight:700">Focused</span><div class="input focus" style="width:100%"><svg class="i"class="lucide lucide-user"xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"fill="none"stroke="currentColor"stroke-width="2"stroke-linecap="round"stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>Ірина Ко<span class="caret" style="display:inline-block;width:2px;height:20px;background:#1F5F4A;margin-left:-8px"></span></div></div><div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start"><span style="font-size:12px;color:#5F6B66;font-weight:700">Error</span><div style="width:100%"><div class="input err"><svg class="i"class="lucide lucide-phone"xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"fill="none"stroke="currentColor"stroke-width="2"stroke-linecap="round"stroke-linejoin="round"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" /></svg>+380 67 12</div><div class="hint">Номер має містити 12 цифр</div></div></div><div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start"><span style="font-size:12px;color:#5F6B66;font-weight:700">Disabled</span><div class="input dis" style="width:100%"><svg class="i"class="lucide lucide-package"xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"fill="none"stroke="currentColor"stroke-width="2"stroke-linecap="round"stroke-linejoin="round"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z" /><path d="M12 22V12" /><polyline points="3.29 7 12 12 20.71 7" /><path d="m7.5 4.27 9 5.15" /></svg>Склад: основний</div></div></div>
+  <h2 style="font-size:18px;font-weight:800;margin-bottom:10px">Рядок товару (List item) — stock × selection</h2>
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-bottom:26px">
+   <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start"><span style="font-size:12px;color:#5F6B66;font-weight:700">В наявності / не вибрано</span><div class="list" style="margin:0;width:100%"><div class="row"><div class="thumb t4">БХ</div><div class="tx"><b>Боді «Хмаринка» · 68</b><span>220 ₴ · є 12 шт</span></div><div class="end"><div class="addbtn"><svg class="i"class="lucide lucide-plus"xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"fill="none"stroke="currentColor"stroke-width="2"stroke-linecap="round"stroke-linejoin="round"><path d="M5 12h14" /><path d="M12 5v14" /></svg></div></div></div></div></div>
+   <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start"><span style="font-size:12px;color:#5F6B66;font-weight:700">В наявності / вибрано</span><div class="list" style="margin:0;width:100%"><div class="row sel"><div class="thumb t1">ПЗ</div><div class="tx"><b>Піжама «Зайчик» · 98</b><span>450 ₴ · є 7 шт</span></div><div class="end"><div class="stepper on"><span><svg class="i"class="lucide lucide-minus"xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"fill="none"stroke="currentColor"stroke-width="2"stroke-linecap="round"stroke-linejoin="round"><path d="M5 12h14" /></svg></span><b>2</b><span><svg class="i"class="lucide lucide-plus"xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"fill="none"stroke="currentColor"stroke-width="2"stroke-linecap="round"stroke-linejoin="round"><path d="M5 12h14" /><path d="M12 5v14" /></svg></span></div></div></div></div></div>
+   <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start"><span style="font-size:12px;color:#5F6B66;font-weight:700">Мало / не вибрано</span><div class="list" style="margin:0;width:100%"><div class="row"><div class="thumb t2">ПВ</div><div class="tx"><b>Піжама «Ведмедик» · 98</b><span>480 ₴ · мінімум 3</span></div><div class="end"><span class="badge low">2 шт · мало</span></div></div></div></div>
+   <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start"><span style="font-size:12px;color:#5F6B66;font-weight:700">Немає / недоступно</span><div class="list" style="margin:0;width:100%"><div class="row disabled"><div class="thumb t1">ПЗ</div><div class="tx"><b>Піжама «Зайчик» · 104</b><span>450 ₴</span></div><div class="end"><span class="badge out">немає</span></div></div></div></div></div>
+  <h2 style="font-size:18px;font-weight:800;margin-bottom:10px">Чип каналу, мітка статусу, лічильник, плитка</h2>
+  <div style="display:flex;gap:22px;flex-wrap:wrap;align-items:flex-end"><div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start"><span style="font-size:12px;color:#5F6B66;font-weight:700">Chip / off · on</span><div class="chips"><div class="chip">Prom</div><div class="chip on"><svg class="i"class="lucide lucide-check"xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"fill="none"stroke="currentColor"stroke-width="2"stroke-linecap="round"stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg>Instagram</div></div></div><div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start"><span style="font-size:12px;color:#5F6B66;font-weight:700">Badge / ok · low · out</span><div style="display:flex;gap:8px"><span class="badge ok">7 шт</span><span class="badge low">2 шт · мало</span><span class="badge out">немає</span></div></div><div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start"><span style="font-size:12px;color:#5F6B66;font-weight:700">Order status</span><div style="display:flex;gap:8px"><span class="st new">Нове</span><span class="st sent">Відправлено</span><span class="st done">Виконано</span></div></div><div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start"><span style="font-size:12px;color:#5F6B66;font-weight:700">Stepper</span><div class="stepper on"><span><svg class="i"class="lucide lucide-minus"xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"fill="none"stroke="currentColor"stroke-width="2"stroke-linecap="round"stroke-linejoin="round"><path d="M5 12h14" /></svg></span><b>2</b><span><svg class="i"class="lucide lucide-plus"xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"fill="none"stroke="currentColor"stroke-width="2"stroke-linecap="round"stroke-linejoin="round"><path d="M5 12h14" /><path d="M12 5v14" /></svg></span></div></div><div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start"><span style="font-size:12px;color:#5F6B66;font-weight:700">Tile / default · warning</span><div style="display:flex;gap:8px"><div class="tile" style="width:120px"><b>6</b><span>замовлень сьогодні</span></div><div class="tile warn" style="width:120px"><b>3</b><span>товари закінчуються</span></div></div></div><div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start"><span style="font-size:12px;color:#5F6B66;font-weight:700">Notice / info · warn · error</span><div style="display:flex;flex-direction:column;gap:6px;width:330px"><div class="notice info"><svg class="i"class="lucide lucide-package"xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"fill="none"stroke="currentColor"stroke-width="2"stroke-linecap="round"stroke-linejoin="round"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z" /><path d="M12 22V12" /><polyline points="3.29 7 12 12 20.71 7" /><path d="m7.5 4.27 9 5.15" /></svg><span>Товар одразу зарезервується.</span></div><div class="notice warn"><svg class="i"class="lucide lucide-triangle-alert"xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"fill="none"stroke="currentColor"stroke-width="2"stroke-linecap="round"stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /><path d="M12 9v4" /><path d="M12 17h.01" /></svg><span>Лишилося 5 шт — це ваш мінімум.</span></div><div class="notice err"><svg class="i"class="lucide lucide-wifi-off"xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"fill="none"stroke="currentColor"stroke-width="2"stroke-linecap="round"stroke-linejoin="round"><path d="M12 20h.01" /><path d="M8.5 16.429a5 5 0 0 1 7 0" /><path d="M5 12.859a10 10 0 0 1 5.17-2.69" /><path d="M19 12.859a10 10 0 0 0-2.007-1.523" /><path d="M2 8.82a15 15 0 0 1 4.177-2.643" /><path d="M22 8.82a15 15 0 0 0-11.288-3.764" /><path d="m2 2 20 20" /></svg><span>Немає з’єднання. Замовлення не створено.</span></div></div></div></div></div></body></html>

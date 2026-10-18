@@ -1,0 +1,156 @@
+<!doctype html><html lang="uk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=1400"><title>Комора · візуальна система</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+ --bg:#EEF1EC;--surface:#FFFFFF;--ink:#17211D;--ink2:#3F4B46;--muted:#5F6B66;--line:#D9E0DB;
+ --primary:#1F5F4A;--primary-press:#174A39;--primary-soft:#E2EEE8;--on-primary:#FFFFFF;
+ --ok:#256B43;--ok-bg:#E3F1E8;--low:#7A4F00;--low-bg:#FCEFD3;--low-line:#E9B64B;--out:#A8201A;--out-bg:#FCE6E4;
+ --r-s:10px;--r-m:14px;--r-l:20px;--sp:4px;
+ --font:'Manrope',system-ui,sans-serif;
+}
+body{font-family:var(--font);color:var(--ink);background:#C9D1CC;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+svg.i{width:22px;height:22px;stroke-width:2;flex:none}
+.frame{position:relative;overflow:hidden;background:var(--bg)}
+.phone{width:390px;height:844px}
+.status{height:47px;display:flex;align-items:center;justify-content:space-between;padding:0 30px 0 34px;font-weight:700;font-size:15px}
+.status .r{display:flex;gap:6px;align-items:center}.status .r i{display:block;width:17px;height:11px;border-radius:2px;background:var(--ink)}
+.status .r b{display:block;width:24px;height:12px;border:1.5px solid var(--ink);border-radius:4px;position:relative}.status .r b:after{content:"";position:absolute;inset:1.5px 5px 1.5px 1.5px;background:var(--ink);border-radius:1.5px}
+.homeind{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:134px;height:5px;border-radius:3px;background:var(--ink)}
+.appbar{display:flex;align-items:center;gap:8px;padding:6px 16px 10px;min-height:52px}
+.appbar h1{font-size:20px;font-weight:800;letter-spacing:-.01em;flex:1}
+.appbar .sub{font-size:13px;color:var(--muted);font-weight:600}
+.iconbtn{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--ink);position:relative;background:transparent}
+.iconbtn .dot{position:absolute;top:9px;right:9px;min-width:16px;height:16px;border-radius:8px;background:var(--out);color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;padding:0 4px;border:2px solid var(--bg)}
+.greet{padding:4px 16px 12px}.greet small{display:block;font-size:14px;color:var(--muted);font-weight:600;margin-bottom:2px}.greet h1{font-size:28px;font-weight:800;letter-spacing:-.02em;line-height:1.15}
+.search{margin:0 16px 14px;height:48px;border-radius:var(--r-m);background:var(--surface);border:1.5px solid var(--line);display:flex;align-items:center;gap:10px;padding:0 14px;color:var(--muted);font-size:15.5px;font-weight:500}
+.search.focus{border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-soft);color:var(--ink)}
+.search .caret{display:inline-block;width:2px;height:20px;background:var(--primary);margin-left:-8px}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 16px 18px}
+.tile{background:var(--surface);border-radius:var(--r-m);padding:12px 12px 11px;border:1px solid var(--line)}
+.tile b{white-space:nowrap;display:block;font-size:24px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.tile span{font-size:12.5px;color:var(--muted);font-weight:600;line-height:1.25;display:block;margin-top:4px}
+.tile.warn{background:var(--low-bg);border-color:var(--low-line)}.tile.warn b,.tile.warn span{color:var(--low)}
+.sec{display:flex;align-items:baseline;justify-content:space-between;padding:0 16px 8px}
+.sec h2{font-size:17px;font-weight:800}.sec a{font-size:14px;font-weight:700;color:var(--primary);text-decoration:none}
+.list{margin:0 16px 18px;background:var(--surface);border-radius:var(--r-m);border:1px solid var(--line);overflow:hidden}
+.row{display:flex;align-items:center;gap:12px;padding:11px 12px;min-height:64px;border-top:1px solid var(--line)}
+.row:first-child{border-top:none}
+.thumb{width:44px;height:44px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;color:#3F4B46}
+.t1{background:#F3E1E6}.t2{background:#DDE8F5}.t3{background:#F5E9D4}.t4{background:#E3EDDC}
+.row .tx{flex:1;min-width:0}
+.row .tx b{display:block;font-size:15px;font-weight:700;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .tx span{display:block;font-size:13px;color:var(--muted);font-weight:500;margin-top:1px}
+.row .end{text-align:right;flex:none}
+.row .end b{display:block;font-size:15px;font-weight:800}
+.row.disabled .tx b,.row.disabled .thumb{opacity:.55}
+.row.sel{background:var(--primary-soft)}
+.badge{display:inline-flex;align-items:center;gap:5px;height:26px;padding:0 10px;border-radius:999px;font-size:13px;font-weight:800;white-space:nowrap}
+.badge:before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.badge.ok{background:var(--ok-bg);color:var(--ok)}.badge.low{background:var(--low-bg);color:var(--low)}.badge.out{background:var(--out-bg);color:var(--out)}
+.badge.neutral{background:#E9EDEA;color:var(--ink2)}.badge.neutral:before{display:none}
+.st{font-size:12.5px;font-weight:700;border-radius:6px;padding:3px 7px}
+.st.new{background:var(--primary-soft);color:var(--primary)}.st.sent{background:#E6ECF6;color:#2D4A7A}.st.done{background:#ECEEEC;color:var(--ink2)}
+.fab{position:absolute;right:16px;bottom:96px;height:56px;border-radius:18px;background:var(--primary);color:var(--on-primary);display:flex;align-items:center;gap:8px;padding:0 20px 0 16px;font-weight:800;font-size:16px;box-shadow:0 6px 16px rgba(23,74,57,.35)}
+.fab svg{width:24px;height:24px}
+.nav{position:absolute;left:0;right:0;bottom:0;height:86px;background:var(--surface);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);padding-top:8px}
+.nav div{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:12px;font-weight:700;color:var(--muted)}
+.nav div.on{color:var(--primary)}.nav div.on svg{background:var(--primary-soft);border-radius:12px;width:52px;padding:3px 13px;height:28px;box-sizing:border-box}
+.nav svg{height:28px;width:24px;padding:3px 0}
+.btn{height:52px;border-radius:var(--r-m);display:flex;align-items:center;justify-content:center;gap:8px;font-weight:800;font-size:16px;border:none;font-family:var(--font);padding:0 20px;white-space:nowrap}
+.btn.primary{background:var(--primary);color:var(--on-primary)}
+.btn.primary.pressed{background:var(--primary-press)}
+.btn.primary.disabled{background:#C8D1CC;color:#5F6B66}
+.btn.secondary{background:var(--surface);color:var(--primary);border:1.5px solid var(--primary)}
+.btn.ghost{background:transparent;color:var(--primary)}
+.btn.danger{background:transparent;color:var(--out)}
+.btn.sm{height:40px;font-size:14px;padding:0 14px;border-radius:12px}
+.stepper{display:flex;align-items:center;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);height:40px}
+.stepper span{width:36px;height:100%;display:flex;align-items:center;justify-content:center;color:var(--primary)}
+.stepper span svg{width:18px;height:18px}
+.stepper b{min-width:26px;text-align:center;font-size:16px;font-weight:800}
+.stepper.on{border-color:var(--primary);background:var(--surface)}
+.addbtn{width:40px;height:40px;border-radius:12px;background:var(--primary-soft);color:var(--primary);display:flex;align-items:center;justify-content:center}
+.bottombar{position:absolute;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);padding:12px 16px 34px;display:flex;align-items:center;gap:12px}
+.bottombar .sum{flex:1}.bottombar .sum b{display:block;font-size:20px;font-weight:800}.bottombar .sum span{font-size:13px;color:var(--muted);font-weight:600}
+.steps{display:flex;gap:6px;padding:0 16px 14px}.steps i{height:4px;flex:1;border-radius:2px;background:var(--line)}.steps i.on{background:var(--primary)}
+.group{padding:0 16px 16px}
+.label{font-size:14px;font-weight:700;color:var(--ink2);margin-bottom:8px;display:flex;justify-content:space-between}
+.label em{font-style:normal;font-weight:600;color:var(--muted)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{height:40px;padding:0 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);display:flex;align-items:center;gap:6px;font-weight:700;font-size:14.5px;color:var(--ink2)}
+.chip.on{background:var(--primary);border-color:var(--primary);color:#fff}
+.chip.on svg{width:16px;height:16px}
+.input{height:50px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);padding:0 14px;display:flex;align-items:center;gap:10px;font-size:15.5px;font-weight:500;margin-bottom:8px}
+.input .ph{color:var(--muted)}
+.input.err{border-color:var(--out);background:#FFF9F8}
+.input.focus{border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-soft)}
+.input.dis{background:#F1F3F1;color:#8A948F}
+.hint{font-size:13px;font-weight:600;color:var(--out);margin:-2px 0 8px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:14px}
+.line{display:flex;justify-content:space-between;align-items:center;font-size:15px;padding:6px 0;gap:10px}
+.line b{font-weight:800}
+.notice{display:flex;gap:10px;align-items:flex-start;border-radius:12px;padding:12px;font-size:14px;font-weight:600;line-height:1.4}
+.notice.info{background:var(--primary-soft);color:var(--primary-press)}
+.notice.warn{background:var(--low-bg);color:var(--low)}
+.notice.err{background:var(--out-bg);color:var(--out)}
+.notice svg{width:20px;height:20px;margin-top:1px}
+.delta{display:flex;align-items:center;gap:8px;font-weight:800;font-size:15px}
+.delta s{color:var(--muted);text-decoration:none;font-weight:700}
+.sk{background:linear-gradient(90deg,#E3E8E4,#F1F4F1,#E3E8E4);border-radius:8px}
+.empty{text-align:center;padding:24px 28px}
+.empty .pic{width:120px;height:120px;border-radius:32px;background:var(--primary-soft);margin:0 auto 18px;display:flex;align-items:center;justify-content:center;color:var(--primary)}
+.empty .pic svg{width:56px;height:56px;stroke-width:1.6}
+.empty h2{font-size:22px;font-weight:800;margin-bottom:8px}
+.empty p{font-size:15px;color:var(--muted);line-height:1.5;font-weight:500;margin-bottom:20px}
+.toast{position:absolute;left:16px;right:16px;bottom:110px;background:var(--ink);color:#fff;border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:10px;font-weight:700;font-size:14.5px}
+.toast a{margin-left:auto;color:#A9E4C8;text-decoration:none;font-weight:800}
+/* tablet / desktop */
+.wide{display:grid}
+.rail{background:var(--surface);border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:center;padding:18px 0;gap:6px}
+.rail .logo,.side .logo{width:44px;height:44px;border-radius:12px;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;margin-bottom:14px}
+.rail div.it{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;font-weight:700;color:var(--muted);width:84px;padding:6px 0}
+.rail div.it.on{color:var(--primary)}.rail div.it.on svg{background:var(--primary-soft);border-radius:12px;width:56px;height:32px;padding:5px 16px;box-sizing:border-box}
+.rail div.it svg{height:32px;padding:5px 0}
+.side{background:var(--surface);border-right:1px solid var(--line);padding:22px 16px;display:flex;flex-direction:column;gap:4px}
+.side .brand{display:flex;align-items:center;gap:12px;margin-bottom:22px}.side .brand .logo{margin:0}.side .brand b{font-size:20px;font-weight:800}.side .brand span{display:block;font-size:13px;color:var(--muted);font-weight:600}
+.side .it{display:flex;align-items:center;gap:12px;height:44px;padding:0 12px;border-radius:12px;font-weight:700;font-size:15px;color:var(--ink2)}
+.side .it.on{background:var(--primary-soft);color:var(--primary)}
+.side .it .n{margin-left:auto;background:var(--low-bg);color:var(--low);font-size:12px;font-weight:800;border-radius:999px;padding:2px 8px}
+.side .cta{margin-top:auto}
+.top{display:flex;align-items:center;gap:14px;padding:18px 28px}
+.top h1{font-size:26px;font-weight:800;letter-spacing:-.02em;flex:1}
+.top .search{margin:0;width:340px}
+table.t{width:100%;border-collapse:collapse;font-size:14.5px}
+table.t th{text-align:left;font-size:13px;color:var(--muted);font-weight:700;padding:10px 14px;border-bottom:1px solid var(--line)}
+table.t td{padding:10px 14px;border-bottom:1px solid var(--line);font-weight:600;vertical-align:middle}
+table.t tr:last-child td{border-bottom:none}
+table.t td.num,table.t th.num{text-align:right}
+table.t tr.sel td{background:var(--primary-soft)}
+table.t tr.dis td{color:#8A948F}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-l);overflow:hidden}
+.panel .ph{display:flex;align-items:center;justify-content:space-between;padding:16px 18px 10px}
+.panel .ph h2{font-size:17px;font-weight:800}
+.panel .ph a{font-size:14px;font-weight:700;color:var(--primary);text-decoration:none}
+.prod{display:flex;align-items:center;gap:10px}.prod .thumb{width:36px;height:36px;font-size:13px;border-radius:8px}
+.bars{display:flex;align-items:flex-end;gap:14px;height:150px;padding:6px 18px 0}
+.bars div{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end;font-size:12px;color:var(--muted);font-weight:700}
+.bars i{display:block;width:100%;background:#B9D3C7;border-radius:6px 6px 2px 2px}
+.bars div.today i{background:var(--primary)}.bars div.today{color:var(--ink)}
+body{width:1400px;background:#fff}</style></head><body><div style="width:1400px;background:#fff;padding:40px;font-family:Manrope">
+  <h1 style="font-size:32px;font-weight:800;margin-bottom:6px">Комора — візуальна система</h1><p style="color:#5F6B66;font-weight:600;margin-bottom:28px">Кольори, типографіка, сітка, відступи. Шрифт Manrope (Google Fonts), іконки Lucide 2 px.</p>
+  <h2 style="font-size:20px;font-weight:800;margin-bottom:12px">Палітра</h2>
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:30px"><div style="border-radius:14px;overflow:hidden;border:1px solid #D9E0DB"><div style="height:72px;background:#1F5F4A;color:#fff;padding:10px;font-weight:800;font-size:14px">Аа 123</div><div style="padding:8px 10px;font-size:13px;font-weight:700">Ялина / Primary<div style="color:#5F6B66;font-weight:600">#1F5F4A</div></div></div><div style="border-radius:14px;overflow:hidden;border:1px solid #D9E0DB"><div style="height:72px;background:#174A39;color:#fff;padding:10px;font-weight:800;font-size:14px">Аа 123</div><div style="padding:8px 10px;font-size:13px;font-weight:700">Ялина темна / Pressed<div style="color:#5F6B66;font-weight:600">#174A39</div></div></div><div style="border-radius:14px;overflow:hidden;border:1px solid #D9E0DB"><div style="height:72px;background:#E2EEE8;color:#17211D;padding:10px;font-weight:800;font-size:14px">Аа 123</div><div style="padding:8px 10px;font-size:13px;font-weight:700">Ялина світла / Soft<div style="color:#5F6B66;font-weight:600">#E2EEE8</div></div></div><div style="border-radius:14px;overflow:hidden;border:1px solid #D9E0DB"><div style="height:72px;background:#EEF1EC;color:#17211D;padding:10px;font-weight:800;font-size:14px">Аа 123</div><div style="padding:8px 10px;font-size:13px;font-weight:700">Тло / Background<div style="color:#5F6B66;font-weight:600">#EEF1EC</div></div></div><div style="border-radius:14px;overflow:hidden;border:1px solid #D9E0DB"><div style="height:72px;background:#FFFFFF;color:#17211D;padding:10px;font-weight:800;font-size:14px">Аа 123</div><div style="padding:8px 10px;font-size:13px;font-weight:700">Поверхня / Surface<div style="color:#5F6B66;font-weight:600">#FFFFFF</div></div></div><div style="border-radius:14px;overflow:hidden;border:1px solid #D9E0DB"><div style="height:72px;background:#D9E0DB;color:#17211D;padding:10px;font-weight:800;font-size:14px">Аа 123</div><div style="padding:8px 10px;font-size:13px;font-weight:700">Лінія / Line<div style="color:#5F6B66;font-weight:600">#D9E0DB</div></div></div><div style="border-radius:14px;overflow:hidden;border:1px solid #D9E0DB"><div style="height:72px;background:#17211D;color:#fff;padding:10px;font-weight:800;font-size:14px">Аа 123</div><div style="padding:8px 10px;font-size:13px;font-weight:700">Текст / Ink<div style="color:#5F6B66;font-weight:600">#17211D</div></div></div><div style="border-radius:14px;overflow:hidden;border:1px solid #D9E0DB"><div style="height:72px;background:#3F4B46;color:#fff;padding:10px;font-weight:800;font-size:14px">Аа 123</div><div style="padding:8px 10px;font-size:13px;font-weight:700">Текст 2 / Ink-2<div style="color:#5F6B66;font-weight:600">#3F4B46</div></div></div><div style="border-radius:14px;overflow:hidden;border:1px solid #D9E0DB"><div style="height:72px;background:#5F6B66;color:#fff;padding:10px;font-weight:800;font-size:14px">Аа 123</div><div style="padding:8px 10px;font-size:13px;font-weight:700">Приглушений / Muted<div style="color:#5F6B66;font-weight:600">#5F6B66</div></div></div><div style="border-radius:14px;overflow:hidden;border:1px solid #D9E0DB"><div style="height:72px;background:#256B43;color:#fff;padding:10px;font-weight:800;font-size:14px">Аа 123</div><div style="padding:8px 10px;font-size:13px;font-weight:700">Є / OK<div style="color:#5F6B66;font-weight:600">#256B43</div></div></div><div style="border-radius:14px;overflow:hidden;border:1px solid #D9E0DB"><div style="height:72px;background:#E3F1E8;color:#256B43;padding:10px;font-weight:800;font-size:14px">Аа 123</div><div style="padding:8px 10px;font-size:13px;font-weight:700">Є тло<div style="color:#5F6B66;font-weight:600">#E3F1E8</div></div></div><div style="border-radius:14px;overflow:hidden;border:1px solid #D9E0DB"><div style="height:72px;background:#7A4F00;color:#fff;padding:10px;font-weight:800;font-size:14px">Аа 123</div><div style="padding:8px 10px;font-size:13px;font-weight:700">Мало / Low<div style="color:#5F6B66;font-weight:600">#7A4F00</div></div></div><div style="border-radius:14px;overflow:hidden;border:1px solid #D9E0DB"><div style="height:72px;background:#FCEFD3;color:#7A4F00;padding:10px;font-weight:800;font-size:14px">Аа 123</div><div style="padding:8px 10px;font-size:13px;font-weight:700">Мало тло<div style="color:#5F6B66;font-weight:600">#FCEFD3</div></div></div><div style="border-radius:14px;overflow:hidden;border:1px solid #D9E0DB"><div style="height:72px;background:#A8201A;color:#fff;padding:10px;font-weight:800;font-size:14px">Аа 123</div><div style="padding:8px 10px;font-size:13px;font-weight:700">Немає / Out<div style="color:#5F6B66;font-weight:600">#A8201A</div></div></div><div style="border-radius:14px;overflow:hidden;border:1px solid #D9E0DB"><div style="height:72px;background:#FCE6E4;color:#A8201A;padding:10px;font-weight:800;font-size:14px">Аа 123</div><div style="padding:8px 10px;font-size:13px;font-weight:700">Немає тло<div style="color:#5F6B66;font-weight:600">#FCE6E4</div></div></div></div>
+  <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:40px">
+  <div><h2 style="font-size:20px;font-weight:800;margin-bottom:12px">Текстові стилі</h2><div style="display:flex;align-items:baseline;gap:18px;border-bottom:1px solid #D9E0DB;padding:10px 0"><span style="width:210px;font-size:13px;color:#5F6B66;font-weight:700;flex:none">Display / 28 ExtraBold</span><span style="font-size:28px;font-weight:800;font-variant-numeric:tabular-nums">Добрий день, Оксано</span></div><div style="display:flex;align-items:baseline;gap:18px;border-bottom:1px solid #D9E0DB;padding:10px 0"><span style="width:210px;font-size:13px;color:#5F6B66;font-weight:700;flex:none">H1 / 24 ExtraBold</span><span style="font-size:24px;font-weight:800;font-variant-numeric:tabular-nums">Замовлення №1047 створено</span></div><div style="display:flex;align-items:baseline;gap:18px;border-bottom:1px solid #D9E0DB;padding:10px 0"><span style="width:210px;font-size:13px;color:#5F6B66;font-weight:700;flex:none">H2 / 20 ExtraBold</span><span style="font-size:20px;font-weight:800;font-variant-numeric:tabular-nums">Нове замовлення</span></div><div style="display:flex;align-items:baseline;gap:18px;border-bottom:1px solid #D9E0DB;padding:10px 0"><span style="width:210px;font-size:13px;color:#5F6B66;font-weight:700;flex:none">H3 / 17 ExtraBold</span><span style="font-size:17px;font-weight:800;font-variant-numeric:tabular-nums">Закінчується</span></div><div style="display:flex;align-items:baseline;gap:18px;border-bottom:1px solid #D9E0DB;padding:10px 0"><span style="width:210px;font-size:13px;color:#5F6B66;font-weight:700;flex:none">Body / 15.5 Medium</span><span style="font-size:15.5px;font-weight:500;font-variant-numeric:tabular-nums">Знайти товар або замовлення</span></div><div style="display:flex;align-items:baseline;gap:18px;border-bottom:1px solid #D9E0DB;padding:10px 0"><span style="width:210px;font-size:13px;color:#5F6B66;font-weight:700;flex:none">Body Bold / 15 Bold</span><span style="font-size:15px;font-weight:700;font-variant-numeric:tabular-nums">Піжама «Зайчик» · 98</span></div><div style="display:flex;align-items:baseline;gap:18px;border-bottom:1px solid #D9E0DB;padding:10px 0"><span style="width:210px;font-size:13px;color:#5F6B66;font-weight:700;flex:none">Caption / 13 SemiBold</span><span style="font-size:13px;font-weight:600;font-variant-numeric:tabular-nums">Розмір 104 · мінімум 3</span></div><div style="display:flex;align-items:baseline;gap:18px;border-bottom:1px solid #D9E0DB;padding:10px 0"><span style="width:210px;font-size:13px;color:#5F6B66;font-weight:700;flex:none">Number / 24 ExtraBold tabular</span><span style="font-size:24px;font-weight:800;font-variant-numeric:tabular-nums">3 180 ₴</span></div>
+   <p style="font-size:13px;color:#5F6B66;margin-top:10px;font-weight:600">Міжрядковий інтервал 1,3–1,5; числа — табличні (tabular-nums), щоб залишки й суми вирівнювались.</p></div>
+  <div><h2 style="font-size:20px;font-weight:800;margin-bottom:12px">Сітка й відступи</h2>
+   <div style="display:flex;gap:18px;align-items:flex-start;margin-bottom:16px">
+    <div style="width:195px;height:300px;border:1px solid #D9E0DB;border-radius:18px;position:relative;overflow:hidden;background:#EEF1EC;flex:none"><div style="position:absolute;top:0;bottom:0;left:8px;width:40.25px;background:rgba(31,95,74,.14)"></div><div style="position:absolute;top:0;bottom:0;left:52.85px;width:40.25px;background:rgba(31,95,74,.14)"></div><div style="position:absolute;top:0;bottom:0;left:97.7px;width:40.25px;background:rgba(31,95,74,.14)"></div><div style="position:absolute;top:0;bottom:0;left:142.55px;width:40.25px;background:rgba(31,95,74,.14)"></div><div style="position:absolute;bottom:8px;left:8px;right:8px;font-size:11px;font-weight:700;color:#1F5F4A">4 колонки · поля 16 · проміжок 12</div></div>
+    <div style="font-size:14px;line-height:1.6;font-weight:600;color:#3F4B46">
+     <b>Телефон</b> (360–414): 4 колонки, поля 16 px, проміжок 12 px.<br><b>Планшет</b> (768–1024): 8 колонок, поля 24 px, проміжок 16 px, бічна навігація-рейка 96 px.<br><b>Монітор</b> (від 1280): 12 колонок, поля 28 px, проміжок 20 px, бічне меню 248 px.<br><br>
+     Крок відступів — 4 px: 4 · 8 · 12 · 16 · 20 · 24 · 32.<br>Радіуси: 10 (дрібні), 14 (картки, поля), 20 (панелі), 999 (мітки, чипи).<br>Мінімальна ціль натискання — 44 × 44 px.</div></div>
+   <h2 style="font-size:20px;font-weight:800;margin:20px 0 12px">Статус залишку</h2>
+   <div style="display:flex;gap:10px;flex-wrap:wrap"><span class="badge ok">7 шт</span><span class="badge low">5 шт · мало</span><span class="badge out">немає</span></div>
+   <p style="font-size:13px;color:#5F6B66;margin-top:10px;font-weight:600">Статус передається кольором і текстом одночасно — не лише кольором.</p></div></div></div></body></html>
